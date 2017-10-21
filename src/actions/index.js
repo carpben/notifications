@@ -1,13 +1,13 @@
 let nextTodoId = 0
-export const addTodo = (date, importance, title, nextAction, details) => {
+export const addNotification = () => {
   return {
-    type: 'ADD_TODO',
+    type: 'ADD_NOTIFICATION',
     id: nextTodoId++,
-    date,
-    importance,
-    title,
-    nextAction,
-    details
+    // date,
+    // importance,
+    // title,
+    // nextAction,
+    // details
   }
 }
 

@@ -1,22 +1,19 @@
 import React from 'react'
 import Header from './Header'
-import Footer from './Footer'
-import AddTodo from '../containers/AddTodo'
-import VisibleTodoList from '../containers/VisibleTodoList'
-import TableContainer from '../containers/TableContainer'
-import NotificationsFlex1 from './NotificationsFlex1'
+import ControlPanel from './ControlPanel'
+// import TableContainer from '../containers/TableContainer'
+import NotificationsTableContainer from '../containers/NotificationsTableContainer'
+// import NotificationsFlex1 from './NotificationsFlex1'
 
+const styles = {
+    margin: "1% 10%"
+}
 const App = () => (
-  <div>
+  <div style={styles}>
     <Header />
-    <AddTodo />
+    <ControlPanel />
     {/* <TableContainer /> */}
-    <NotificationFlexRow1 />
-    <NotificationsFlex1 />
-    <h1>---</h1>
-    {/* <Table /> */}
-    {/* <VisibleTodoList /> */}
-    {/* <Footer /> */}
+    <NotificationsTableContainer />
   </div>
 )
 
