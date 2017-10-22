@@ -3,14 +3,13 @@ import { connect } from 'react-redux'
 import AddButton from '../components/AddButton'
 import {addNotification} from '../actions'
 
-const mapDispatchToProps = (dispatch) => {
-  return {
+const mapDispatchToProps = dispatch => ({
     onClick: () => {
-      dispatch(addNotification())
+        console.log('onClick runs')
+        dispatch(addNotification())
     }
-  }
-}
+})
 
-const AddButtonContainer = connect()(AddButton)
+const AddButtonContainer = connect(null, mapDispatchToProps)(AddButton)
 
 export default AddButtonContainer

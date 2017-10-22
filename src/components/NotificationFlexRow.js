@@ -1,12 +1,16 @@
 import React from 'react';
+import {Checkbox} from 'react-bootstrap'
+
 
 const NotificationFlexRow = ({date, importance, title, nextAction, moreDetails}) => (
     <div style={{display:"flex"}}>
-        <textarea style={{flex:1}}>jjjjjjjjjj1111</textarea>
-        <textarea style={{flex:1}}>jjjjjjjjjj2222</textarea>
-        <textarea style={{flex:1}}>jjjjjjjjjj33333333333333</textarea>
-        <textarea style={{flex:1}}>jjjjjjjjjj44444444444444</textarea>
-        <textarea style={{flex:1}}>jjjjjjjjjj555555</textarea>
+        <textarea style={{flexBasis:70}}>{date}</textarea>
+        <textarea style={{flex:1}}>{importance}</textarea>
+        <textarea style={{flex:1}}>{title}</textarea>
+        <textarea style={{flex:1}}>{nextAction}</textarea>
+        <textarea style={{flex:1}}>{moreDetails}</textarea>
+        <div style={{flex:1}}><Checkbox /></div>
+
     </div>
 )
 

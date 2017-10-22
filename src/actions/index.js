@@ -1,5 +1,7 @@
 let nextTodoId = 0
 export const addNotification = () => {
+    console.log('addNotification action')
+
   return {
     type: 'ADD_NOTIFICATION',
     id: nextTodoId++,

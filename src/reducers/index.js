@@ -21,7 +21,8 @@ const start = [{
 
 const notifications = (state = start, action) => {
   switch (action.type) {
-    case 'ADD':
+    case 'ADD_NOTIFICATION':
+        console.log('ADD')
       return [
         ...state,
         {
