@@ -1,0 +1,31 @@
+.NotificationsTable {
+    thead tr {
+      th {
+         border-bottom: 1px solid #555;
+      }
+
+
+        // tr {
+        //
+        //
+        //     border: none;
+        //     // border: 1px solid red;
+        //
+        // }
+    }
+    tbody {
+        td, th {
+            border-bottom: 1px dashed #bbb;
+            // border-right: 1px solid #bbb;
+        }
+    }
+    @media (max-width: 700px) {
+        table, td, tr, th {
+                display: block;
+
+        }
+    }
+    .notificationDone {
+      color: #0f0;
+   }
+}
