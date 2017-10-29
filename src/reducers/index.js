@@ -63,6 +63,7 @@ const notifications = (state = start, action) => {
          )
       case 'REFRESH_TABLE':
          return [...state].sort( (not0, not1) => not0.completed-not1.completed )
+      case 'EDIT'
 
 
     default:

@@ -25,12 +25,6 @@ export const notificationDeleteAction = (id) => {
   }
 }
 
-export const setVisibilityFilter = filter => {
-  return {
-    type: 'SET_VISIBILITY_FILTER',
-    filter
-  }
-}
 
 export const toggleComplete = id => {
   return {
@@ -42,3 +36,5 @@ export const toggleComplete = id => {
 export const refreshTable = () => {
    return {type: 'REFRESH_TABLE'}
 }
+
+export const
