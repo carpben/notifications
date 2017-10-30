@@ -13,7 +13,7 @@ const start = [
    {
       id: 100,
       date: "1/1",
-      importance: "1",
+      importance: 1,
       title: "111",
       nextAction: "Go 1",
       details: "More about 1",
@@ -22,7 +22,7 @@ const start = [
    {
       id: 101,
       date: "2/1",
-      importance: "2",
+      importance: 2,
       title: "dog",
       nextAction: "Walk around the block",
       details: "no more details for now",
@@ -31,9 +31,27 @@ const start = [
    {
       id: 102,
       date: "3/1",
-      importance: "3",
+      importance: 3,
       title: "programming",
       nextAction: "prepare another react-redux app",
+      details:"no more details for now. jjjjjjjjjjjkkkkkk 123333333333333333 jjjjjjjjj",
+      completed: false
+   },
+   {
+      id: 103,
+      date: "2/1/2018",
+      importance: 4,
+      title: "cat",
+      nextAction: "Change the bucket",
+      details: "no more details for now",
+      completed: false
+   },
+   {
+      id: 104,
+      date: "2/1/2018",
+      importance: 4,
+      title: "Facebook",
+      nextAction: "Update my FB picture",
       details:"no more details for now. jjjjjjjjjjjkkkkkk 123333333333333333 jjjjjjjjj",
       completed: false
    }
@@ -47,7 +65,7 @@ const notifications = (state = start, action) => {
            {
              id: action.id,
              date: "",
-             importance: "",
+             importance: 3,
              title: "",
              nextAction: "",
              details: "",
@@ -63,8 +81,28 @@ const notifications = (state = start, action) => {
          )
       case 'REFRESH_TABLE':
          return [...state].sort( (not0, not1) => not0.completed-not1.completed )
-      case 'EDIT'
-
+      case 'EDIT_FIELD':
+         const {id, field, text}=action
+            const newState = state.map( not => {
+               if (not.id!=id) {return not}
+               else {
+                  not[field]=text
+                  return not
+               }
+            })
+            return [...state]
+      case 'CHANGE_IMPORTANCE_VALUE':
+         {
+            const {id, newImportanceValue}=action
+            const newState = state.map( not => {
+               if (not.id!=id) {return not}
+               else {
+                  not.importance=newImportanceValue
+                  return not
+               }
+            })
+            return newState
+         }
 
     default:
       return state

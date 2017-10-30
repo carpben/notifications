@@ -14,9 +14,14 @@
         // }
     }
     tbody {
-        td, th {
-            border-bottom: 1px dashed #bbb;
-            // border-right: 1px solid #bbb;
+        td {
+            padding-top : 0 !important;
+            padding-bottom: 0 !important;
+        }
+        input, .TextField {
+           width: 100%;
+           border: none;
+           line-height: 2;
         }
     }
     @media (max-width: 700px) {

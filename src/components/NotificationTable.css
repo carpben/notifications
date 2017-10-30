@@ -1,8 +1,14 @@
 .NotificationsTable thead tr th {
   border-bottom: 1px solid #555; }
 
-.NotificationsTable tbody td, .NotificationsTable tbody th {
-  border-bottom: 1px dashed #bbb; }
+.NotificationsTable tbody td {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important; }
+
+.NotificationsTable tbody input, .NotificationsTable tbody .TextField {
+  width: 100%;
+  border: none;
+  line-height: 2; }
 
 @media (max-width: 700px) {
   .NotificationsTable table, .NotificationsTable td, .NotificationsTable tr, .NotificationsTable th {

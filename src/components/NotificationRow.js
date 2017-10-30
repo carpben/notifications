@@ -1,7 +1,9 @@
 import React from 'react'
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
+import TextField from 'material-ui/TextField';
 import 'react-datepicker/dist/react-datepicker.css'
+import ReactStars from 'react-stars'
 
 class NotificationRow extends React.Component {
    constructor (props){
@@ -15,28 +17,58 @@ class NotificationRow extends React.Component {
         date: date
      });
    }
+   onStarValueChange = (newRating) => {this.props.changeImportance(this.props.id, newRating)}
    render (){
-      const {id, date, importance, title, nextAction, details, completed, toggleComplete, notificationDelete} = this.props
+      const {id, date, importance, title, nextAction, details, completed, toggleComplete, deleteNotification, editField} = this.props
+      // const importanceStrings = ["Very", "", "Somewhat", "", "Marginal"]
+      // const importanceOptions = importanceStrings.map( (str, index, arr) => {
+      //    const value = arr.length-index
+      //    return <option value={value} key={value}> {str? `${value} - ${str}` : value } </option>
+      // })
       const notificationDoneclass = completed? 'notificationDone' : '' ;
+
+
       return (
          <tr >
            <td  className="date-column">
              <DatePicker selected={this.state.date} onChange={this.handleChange}/>
           </td>
            <td className="importance-column">
-              <select>
-                <option value={5}>5 - very</option>
-                <option value={4}>4</option>
-                <option value={3}>3 - Somewhat</option>
-                <option value={2}>2</option>
-                <option value={1}>1 - Not at all</option>
-             </select>
+             <ReactStars count={5} size={24} color2={'#ffd700'} value={importance} onChange={this.onStarValueChange} />
+              {/* <select value={importance}>
+                 {importanceOptions}
+             </select> */}
           </td>
-           <td contentEditable="true" className="title-column">{title}</td>
-           <td contentEditable="true" className="next-column">{nextAction}</td>
-           <td contentEditable="true" className="details-column">{details}</td>
+           <td className="title-column"><input value={title} /></td>
+           <td className="next-column">
+             <TextField
+                 id="multiline-flexible"
+                 multiline
+                 rowsMax="10"
+                 value={nextAction}
+                 onChange={(e)=>editField(id, 'nextAction', e.target.value )}
+               //   className={classes.textField}
+               className="TextField"
+               //   margin="normal"
+            />
+
+          </td>
+           <td className="details-column">
+             <TextField
+                  id="multiline-flexible"
+                  multiline
+                  rowsMax="10"
+                  value={details}
+                  onChange={(e)=>editField(id, 'details', e.target.value )}
+
+                //   onChange={this.handleChange('multiline')}
+                //   className={classes.textField}
+                className="TextField"
+                  // margin="normal"
+             />
+          </td>
            <td><span className={"notification-done glyphicon glyphicon-ok " + notificationDoneclass } onClick={(e)=>toggleComplete(id)} ></span></td>
-           <td><span className="notification-remove glyphicon glyphicon-remove" onClick={(e)=>notificationDelete(id)}></span></td>
+           <td><span className="notification-remove glyphicon glyphicon-remove" onClick={(e)=>deleteNotification(id)}></span></td>
          </tr>
       )
    }

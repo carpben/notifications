@@ -37,4 +37,20 @@ export const refreshTable = () => {
    return {type: 'REFRESH_TABLE'}
 }
 
-export const
+export const editField = (id, field, text) => {
+   return {
+      type:'EDIT_FIELD',
+      id,
+      field,
+      text
+   }
+}
+
+export const changeImportance = (id, newImportanceValue) => {
+   console.log(newImportanceValue)
+   return ({
+      type: 'CHANGE_IMPORTANCE_VALUE',
+      id,
+      newImportanceValue
+   })
+}
