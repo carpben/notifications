@@ -8,16 +8,22 @@ import ReactStars from 'react-stars'
 class NotificationRow extends React.Component {
    constructor (props){
       super (props)
-      this.state = {
-         date: moment()
-      }
+
    }
    handleChange = (date) => {
-     this.setState({
-        date: date
-     });
+      console.log(date)
+   //    console.log(typeof date)
+   //   this.setState({
+   //      date: date
+   //   });
    }
    onStarValueChange = (newRating) => {this.props.changeImportance(this.props.id, newRating)}
+   onDatePickerChange = (newDate) => {
+      console.log(newDate.format())
+      console.log('moment.max returns')
+      console.log(moment.max(this.props.date, newDate).format())
+      this.props.changeDate(this.props.id, newDate)
+   }
    render (){
       const {id, date, importance, title, nextAction, details, completed, toggleComplete, deleteNotification, editField} = this.props
       // const importanceStrings = ["Very", "", "Somewhat", "", "Marginal"]
@@ -31,10 +37,10 @@ class NotificationRow extends React.Component {
       return (
          <tr >
            <td  className="date-column">
-             <DatePicker selected={this.state.date} onChange={this.handleChange}/>
+             <DatePicker selected={date} onChange={this.onDatePickerChange} dateFormat='DD MMM YY'/>
           </td>
            <td className="importance-column">
-             <ReactStars count={5} size={24} color2={'#ffd700'} value={importance} onChange={this.onStarValueChange} />
+             <ReactStars count={5} size={19} color2={'#ffd700'} value={importance} onChange={this.onStarValueChange} />
               {/* <select value={importance}>
                  {importanceOptions}
              </select> */}

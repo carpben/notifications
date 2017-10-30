@@ -54,3 +54,12 @@ export const changeImportance = (id, newImportanceValue) => {
       newImportanceValue
    })
 }
+
+export const changeDate = (id, newDate) => {
+
+   return {
+      type: 'CHANGE_DATE',
+      id,
+      newDate
+   }
+}

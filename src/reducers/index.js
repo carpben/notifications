@@ -1,6 +1,5 @@
+import moment from 'moment'
 // import { combineReducers } from 'redux'
-// import todos from './todos'
-// import visibilityFilter from './visibilityFilter'
 //
 // const todoApp = combineReducers({
 //   todos,
@@ -12,7 +11,7 @@
 const start = [
    {
       id: 100,
-      date: "1/1",
+      date: moment('2018-1-1'),
       importance: 1,
       title: "111",
       nextAction: "Go 1",
@@ -21,7 +20,7 @@ const start = [
    },
    {
       id: 101,
-      date: "2/1",
+      date: moment('2018-1-2'),
       importance: 2,
       title: "dog",
       nextAction: "Walk around the block",
@@ -30,7 +29,7 @@ const start = [
    },
    {
       id: 102,
-      date: "3/1",
+      date: moment('2018-5-20'),
       importance: 3,
       title: "programming",
       nextAction: "prepare another react-redux app",
@@ -39,7 +38,7 @@ const start = [
    },
    {
       id: 103,
-      date: "2/1/2018",
+      date: moment('2017-12-1'),
       importance: 4,
       title: "cat",
       nextAction: "Change the bucket",
@@ -48,7 +47,7 @@ const start = [
    },
    {
       id: 104,
-      date: "2/1/2018",
+      date: moment('2017-11-2'),
       importance: 4,
       title: "Facebook",
       nextAction: "Update my FB picture",
@@ -80,17 +79,27 @@ const notifications = (state = start, action) => {
              : notification
          )
       case 'REFRESH_TABLE':
-         return [...state].sort( (not0, not1) => not0.completed-not1.completed )
+         return [...state].sort(
+            (not1, not2) => not2.importance-not1.importance
+         ).sort(
+            (not1, not2) => not1.date-not2.date 
+         )
+         // .sort(
+         //    (not1, not2) => {
+         //       console.log(moment.max(not1.date, not2.date))
+         //    }
+         .sort(
+            (not0, not1) => not0.completed-not1.completed
+         )
       case 'EDIT_FIELD':
          const {id, field, text}=action
             const newState = state.map( not => {
-               if (not.id!=id) {return not}
-               else {
-                  not[field]=text
-                  return not
+               if (not.id===id) {
+                  return Object.assign({}, not, { [field]: text } )
                }
+               return not
             })
-            return [...state]
+            return newState
       case 'CHANGE_IMPORTANCE_VALUE':
          {
             const {id, newImportanceValue}=action
@@ -103,7 +112,15 @@ const notifications = (state = start, action) => {
             })
             return newState
          }
-
+      case 'CHANGE_DATE':
+      {
+         const {id, newDate} = action
+         const newState = [...state]
+         const index = newState.findIndex( not => not.id===id)
+         const newNot = {...newState[index], date:newDate}
+         newState[index]=newNot
+         return newState
+      }
     default:
       return state
   }

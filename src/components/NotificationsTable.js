@@ -9,7 +9,7 @@ import './NotificationTable.css'
 //     }
 // }
 
-const NotificationsTable = ({notifications, addNotification, refreshTable, toggleComplete, deleteNotification, editField, changeImportance}) => (
+const NotificationsTable = ({notifications, addNotification, refreshTable, toggleComplete, deleteNotification, editField, changeImportance, changeDate}) => (
     <table className="table NotificationsTable">
         <thead>
          <tr>
@@ -25,7 +25,7 @@ const NotificationsTable = ({notifications, addNotification, refreshTable, toggl
         <tbody>
          {
              notifications.map(
-                 (notification) => <NotificationRow key={notification.id+notification.title} {...notification} toggleComplete={toggleComplete} deleteNotification={deleteNotification} editField={editField} changeImportance={changeImportance}/>
+                 (notification) => <NotificationRow key={notification.id+notification.title} {...notification} toggleComplete={toggleComplete} deleteNotification={deleteNotification} editField={editField} changeImportance={changeImportance} changeDate={changeDate}/>
              )
          }
         </tbody>

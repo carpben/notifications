@@ -5,8 +5,8 @@
 .date-column {
     width: 10%;
 }
-.importance.column {
-    width: 10%
+.importance-column {
+    width: 50px !important;
 }
 .title-column {
     width: 15%;
