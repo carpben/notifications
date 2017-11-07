@@ -5,6 +5,7 @@ import TextField from 'material-ui/TextField';
 import 'react-datepicker/dist/react-datepicker.css'
 import ReactStars from 'react-stars'
 
+
 class NotificationRow extends React.Component {
    constructor (props){
       super (props)

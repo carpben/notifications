@@ -19,3 +19,6 @@
 
 .NotificationsTable .next-column > div > div:before, .NotificationsTable .next-column div > div:after, .NotificationsTable .details-column > div > div:before, .NotificationsTable .details-column div > div:after, .NotificationsTable .title-column > div > div:before, .NotificationsTable .title-column div > div:after {
   height: 0; }
+
+.NotificationsTable .MuiInput-inputMultiline-18 {
+  font-size: 12px; }
