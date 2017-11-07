@@ -45,7 +45,23 @@ class NotificationRow extends React.Component {
                  {importanceOptions}
              </select> */}
           </td>
-           <td className="title-column"><input value={title} /></td>
+           <td className="title-column">
+           {
+            //  <input value={title} />
+           }
+            <TextField
+                 id="multiline-flexible"
+                 multiline
+                 rowsMax="10"
+                 value={title}
+                 onChange={(e)=>editField(id, 'title', e.target.value )}
+
+               //   onChange={this.handleChange('multiline')}
+               //   className={classes.textField}
+               className="TextField"
+                 // margin="normal"
+            />
+           </td>
            <td className="next-column">
              <TextField
                  id="multiline-flexible"

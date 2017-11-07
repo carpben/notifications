@@ -17,5 +17,5 @@
 .NotificationsTable .notificationDone {
   color: #0f0; }
 
-.NotificationsTable .next-column > div > div:before, .NotificationsTable .next-column div > div:after, .NotificationsTable .details-column > div > div:before, .NotificationsTable .details-column div > div:after {
+.NotificationsTable .next-column > div > div:before, .NotificationsTable .next-column div > div:after, .NotificationsTable .details-column > div > div:before, .NotificationsTable .details-column div > div:after, .NotificationsTable .title-column > div > div:before, .NotificationsTable .title-column div > div:after {
   height: 0; }
