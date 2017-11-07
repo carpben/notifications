@@ -1,0 +1,21 @@
+.NotificationsTable thead tr th {
+  border-bottom: 1px solid #555; }
+
+.NotificationsTable tbody td {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important; }
+
+.NotificationsTable tbody input, .NotificationsTable tbody .TextField {
+  width: 100%;
+  border: none;
+  line-height: 2; }
+
+@media (max-width: 700px) {
+  .NotificationsTable table, .NotificationsTable td, .NotificationsTable tr, .NotificationsTable th {
+    display: block; } }
+
+.NotificationsTable .notificationDone {
+  color: #0f0; }
+
+.NotificationsTable .next-column > div > div:before, .NotificationsTable .next-column div > div:after, .NotificationsTable .details-column > div > div:before, .NotificationsTable .details-column div > div:after {
+  height: 0; }
