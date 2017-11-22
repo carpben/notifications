@@ -5,6 +5,7 @@ import TextField from 'material-ui/TextField';
 import 'react-datepicker/dist/react-datepicker.css'
 import ReactStars from 'react-stars'
 import { withStyles } from 'material-ui/styles';
+import StyledTextField2 from './StyledTextField2'
 
 
 class NotificationRow extends React.Component {
@@ -35,16 +36,10 @@ class NotificationRow extends React.Component {
 
           </td>
            <td className="title-column">
-            <TextField
-                 id="multiline-flexible"
-                 multiline
-                 rowsMax="10"
-                 value={title}
-                 onChange={(e)=>editField(id, 'title', e.target.value )}
-               //   className={classes.textField}
-               className="TextField"
-                 // margin="normal"
-                 inputClassName="multiInput"
+            <StyledTextField2
+            txt = {title}
+            editField = {editField}
+            id={id}
             />
            </td>
            <td className="next-column">
