@@ -63,3 +63,10 @@ export const changeDate = (id, newDate) => {
       newDate
    }
 }
+
+export const editMessage = (newMessage) => {
+   return {
+      type: "EDIT_MESSAGE",
+      newMessage
+   }
+}
