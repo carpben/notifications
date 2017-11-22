@@ -4,146 +4,38 @@ import { withStyles } from 'material-ui/styles';
 import MenuItem from 'material-ui/Menu/MenuItem';
 import TextField from 'material-ui/TextField';
 
-const styles = theme => ({
-  container: {
-    display: 'flex',
-    flexWrap: 'wrap',
-  },
-  textField: {
-    marginLeft: theme.spacing.unit,
-    marginRight: theme.spacing.unit,
-    width: 200,
-  },
-  menu: {
-    width: 200,
-  },
-});
-
-const currencies = [
-  {
-    value: 'USD',
-    label: '$',
-  },
-  {
-    value: 'EUR',
-    label: '€',
-  },
-  {
-    value: 'BTC',
-    label: '฿',
-  },
-  {
-    value: 'JPY',
-    label: '¥',
-  },
-];
-
-class TextFields extends React.Component {
-  state = {
-    name: 'Cat in the Hat',
-    age: '',
-    multiline: 'Controlled',
-    currency: 'EUR',
-  };
-
-  handleChange = name => event => {
-    this.setState({
-      [name]: event.target.value,
-    });
-  };
-
-  render() {
-    const { classes } = this.props;
-
-    return (
-      <form className={classes.container} noValidate autoComplete="off">
-        <TextField
-          label="With placeholder multiline"
-          placeholder="Placeholder"
+class UnStyledTextField extends React.Component {
+	constructor(props){
+		super(props);
+		this.state = {
+			txt:  'Multiline input field with custom font size and line height',
+		}
+	}
+	render(){
+		const {classes} = this.props;
+		return (
+			<div>
+				<TextField
+					InputClassName={classes.TheInput}
+          id="multiline-flexible"
+          label="Multiline"
           multiline
-          className={classes.textField}
-          margin="normal"
+          rowsMax="4"
+          value={this.state.txt}
+          onChange={e=>this.setState({txt: e.target.value})}
         />
-        <TextField
-          id="number"
-          label="Number"
-          value={this.state.age}
-          onChange={this.handleChange('age')}
-          type="number"
-          className={classes.textField}
-          InputLabelProps={{
-            shrink: true,
-          }}
-          margin="normal"
-        />
-        <TextField
-          id="search"
-          label="Search field"
-          type="search"
-          className={classes.textField}
-          margin="normal"
-        />
-        <TextField
-          id="select-currency"
-          select
-          label="Select"
-          className={classes.textField}
-          value={this.state.currency}
-          onChange={this.handleChange('currency')}
-          SelectProps={{
-            MenuProps: {
-              className: classes.menu,
-            },
-          }}
-          helperText="Please select your currency"
-          margin="normal"
-        >
-          {currencies.map(option => (
-            <MenuItem key={option.value} value={option.value}>
-              {option.label}
-            </MenuItem>
-          ))}
-        </TextField>
-        <TextField
-          id="select-currency-native"
-          select
-          label="Native select"
-          className={classes.textField}
-          value={this.state.currency}
-          onChange={this.handleChange('currency')}
-          SelectProps={{
-            native: true,
-            MenuProps: {
-              className: classes.menu,
-            },
-          }}
-          helperText="Please select your currency"
-          margin="normal"
-        >
-          {currencies.map(option => (
-            <option key={option.value} value={option.value}>
-              {option.label}
-            </option>
-          ))}
-        </TextField>
-        <TextField
-          id="full-width"
-          label="Label"
-          InputLabelProps={{
-            shrink: true,
-          }}
-          placeholder="Placeholder"
-          helperText="Full width!"
-          fullWidth
-          margin="normal"
-        />
-      </form>
-    );
-  }
+			</div>
+		)
+	}
 }
 
-TextFields.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
+const styles = theme => ({
+	TheInput: {
+		fontSize: 13,
+		lineHeight: 1.8
+	}
+});
 
-export default withStyles(styles)(TextFields);
+const StyledTextField = withStyles(styles)(UnStyledTextField);
+
+export default StyledTextField
