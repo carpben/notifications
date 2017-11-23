@@ -5,16 +5,16 @@ import MenuItem from 'material-ui/Menu/MenuItem';
 import TextField from 'material-ui/TextField';
 
 const UnStyledTextField = (props) => {
-	const {txt, editField, id, classes} = props;
+	const {txt, field, editField, id, classes} = props;
 	return (
 		<div>
 			<TextField
 			 InputClassName={classes.TheInput}
-	       id="multiline-flexible"
+	       id={`multiline-flexible-${id}-title`}
 	       multiline
 	       rowsMax="4"
 	       value={txt}
-	       onChange={(e)=> editField(id, "title", e.target.value )}
+	       onChange={(e)=> editField(id, field, e.target.value )}
 	     />
 		</div>
 	)

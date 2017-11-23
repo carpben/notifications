@@ -43,18 +43,21 @@ class NotificationRow extends React.Component {
             />
            </td>
            <td className="next-column">
-             <TextField
+              <StyledTextField2
+              txt = {nextAction}
+              field = "nextAction"
+              editField = {editField}
+              id={id}
+              />
+         {/*    <TextField
                  id="multiline-flexible"
                  multiline
                  rowsMax="10"
                  value={nextAction}
                  onChange={(e)=>editField(id, 'nextAction', e.target.value )}
-               //   className={classes.textField}
                className="TextField"
                inputClassName="multiInput"
-
-               //   margin="normal"
-            />
+            />*/}
           </td>
            <td className="details-column">
              <TextField
