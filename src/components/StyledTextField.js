@@ -9,10 +9,11 @@ const UnStyledTextField = (props) => {
 	return (
 		<div>
 			<TextField
+			fullWidth
 			 InputClassName={classes.TheInput}
-	       id={`multiline-flexible-${id}-title`}
+	       id={`multiline-flexible-${id}-${field}`}
 	       multiline
-	       rowsMax="4"
+	       rowsMax="8"
 	       value={txt}
 	       onChange={(e)=> editField(id, field, e.target.value )}
 	     />

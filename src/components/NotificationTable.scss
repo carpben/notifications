@@ -18,10 +18,10 @@
             padding-top : 0 !important;
             padding-bottom: 0 !important;
         }
-        input, .TextField {
-           width: 100%;
-           border: none;
-        }
+        // input, .TextField {
+        //    width: 100%;
+        //    border: none;
+        // }
     }
     @media (max-width: 700px) {
         table, td, tr, th {
@@ -33,7 +33,7 @@
       color: #0f0;
    }
    .next-column, .details-column, .title-column{
-      >div>div:before, div>div:after {
+      >div>div>div:before, div>div>div:after {
          height: 0;
       }
    }

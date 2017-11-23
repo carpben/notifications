@@ -5,10 +5,6 @@
   padding-top: 0 !important;
   padding-bottom: 0 !important; }
 
-.NotificationsTable tbody input, .NotificationsTable tbody .TextField {
-  width: 100%;
-  border: none; }
-
 @media (max-width: 700px) {
   .NotificationsTable table, .NotificationsTable td, .NotificationsTable tr, .NotificationsTable th {
     display: block; } }
@@ -16,5 +12,5 @@
 .NotificationsTable .notificationDone {
   color: #0f0; }
 
-.NotificationsTable .next-column > div > div:before, .NotificationsTable .next-column div > div:after, .NotificationsTable .details-column > div > div:before, .NotificationsTable .details-column div > div:after, .NotificationsTable .title-column > div > div:before, .NotificationsTable .title-column div > div:after {
+.NotificationsTable .next-column > div > div > div:before, .NotificationsTable .next-column div > div > div:after, .NotificationsTable .details-column > div > div > div:before, .NotificationsTable .details-column div > div > div:after, .NotificationsTable .title-column > div > div > div:before, .NotificationsTable .title-column div > div > div:after {
   height: 0; }
