@@ -27,6 +27,6 @@ const styles = theme => ({
 	}
 });
 
-const StyledTextField2 = withStyles(styles)(UnStyledTextField);
+const StyledTextField = withStyles(styles)(UnStyledTextField);
 
-export default StyledTextField2
+export default StyledTextField
