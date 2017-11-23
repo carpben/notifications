@@ -1,7 +1,5 @@
 let notificationId = 0
 export const addNotification = () => {
-    console.log('addNotification action')
-
   return {
     type: 'ADD_NOTIFICATION',
     id: notificationId++,
@@ -46,7 +44,6 @@ export const changeImportance = (id, newImportanceValue) => {
 }
 
 export const changeDate = (id, newDate) => {
-
    return {
       type: 'CHANGE_DATE',
       id,

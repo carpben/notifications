@@ -83,11 +83,11 @@ const notifications = (state = start, action) => {
          )
       case 'EDIT_FIELD':
          const {id, field, text}=action
-            const newState = state.map( not => {
-               if (not.id===id) {
-                  return Object.assign({}, not, { [field]: text } )
+            const newState = state.map( notification => {
+               if (notification.id===id) {
+                  return Object.assign({}, notification, { [field]: text } )
                }
-               return not
+               return notification
             })
             return newState
       case 'CHANGE_IMPORTANCE_VALUE':

@@ -32,6 +32,7 @@ class NotificationRow extends React.Component {
            <td className="title-column">
               <StyledTextField
                   txt = {title}
+                  field = "title"
                   editField = {editField}
                   id={id}
                />
