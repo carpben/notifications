@@ -30,53 +30,32 @@ class NotificationRow extends React.Component {
          <tr >
            <td  className="date-column">
              <DatePicker selected={date} onChange={this.onDatePickerChange} dateFormat='DD MMM YY'/>
-          </td>
+           </td>
            <td className="importance-column">
              <ReactStars count={5} size={19} color2={'#ffd700'} value={importance} onChange={this.onStarValueChange} />
-
-          </td>
+           </td>
            <td className="title-column">
-            <StyledTextField2
-            txt = {title}
-            editField = {editField}
-            id={id}
-            />
+              <StyledTextField2
+                  txt = {title}
+                  editField = {editField}
+                  id={id}
+               />
            </td>
            <td className="next-column">
               <StyledTextField2
-              txt = {nextAction}
-              field = "nextAction"
-              editField = {editField}
-              id={id}
+                 txt = {nextAction}
+                 field = "nextAction"
+                 editField = {editField}
+                 id={id}
               />
-         {/*    <TextField
-                 id="multiline-flexible"
-                 multiline
-                 rowsMax="10"
-                 value={nextAction}
-                 onChange={(e)=>editField(id, 'nextAction', e.target.value )}
-               className="TextField"
-               inputClassName="multiInput"
-            />*/}
           </td>
-           <td className="details-column">
-            {/* <TextField
-                  id="multiline-flexible"
-                  multiline
-                  rowsMax="10"
-                  value={details}
-                  onChange={(e)=>editField(id, 'details', e.target.value )}
-                  inputClassName="multiInput"
+          <td className="details-column">
 
-                //   className={classes.textField}
-                className="TextField"
-                  // margin="normal"
-             />*/}
-             <StyledTextField2
-            txt = {details}
-            field = "details"
-            editField = {editField}
-            id={id}
+            <StyledTextField2
+               txt = {details}
+               field = "details"
+               editField = {editField}
+               id={id}
             />
           </td>
            <td><span className={"notification-done glyphicon glyphicon-ok " + notificationDoneclass } onClick={(e)=>toggleComplete(id)} ></span></td>

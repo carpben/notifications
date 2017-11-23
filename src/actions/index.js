@@ -5,11 +5,6 @@ export const addNotification = () => {
   return {
     type: 'ADD_NOTIFICATION',
     id: notificationId++,
-    // date,
-    // importance,
-    // title,
-    // nextAction,
-    // details
   }
 }
 
@@ -17,11 +12,6 @@ export const notificationDeleteAction = (id) => {
   return {
     type: 'NOTIFICATION_DELETE',
     id
-    // date,
-    // importance,
-    // title,
-    // nextAction,
-    // details
   }
 }
 
