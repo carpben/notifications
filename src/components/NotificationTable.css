@@ -14,3 +14,9 @@
 
 .NotificationsTable .next-column > div > div > div:before, .NotificationsTable .next-column div > div > div:after, .NotificationsTable .details-column > div > div > div:before, .NotificationsTable .details-column div > div > div:after, .NotificationsTable .title-column > div > div > div:before, .NotificationsTable .title-column div > div > div:after {
   height: 0; }
+
+.NotificationsTable .date-column input {
+  border: none; }
+
+.NotificationsTable .date-column {
+  width: 80px; }

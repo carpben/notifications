@@ -3,15 +3,6 @@
       th {
          border-bottom: 1px solid #555;
       }
-
-
-        // tr {
-        //
-        //
-        //     border: none;
-        //     // border: 1px solid red;
-        //
-        // }
     }
     tbody {
         td {
@@ -37,6 +28,11 @@
          height: 0;
       }
    }
-
+   .date-column input {
+      border: none
+   }
+   .date-column {
+      width: 80px;
+   }
 
 }
