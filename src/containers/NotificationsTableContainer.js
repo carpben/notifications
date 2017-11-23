@@ -4,7 +4,7 @@ import {addNotification, notificationDeleteAction, toggleComplete, refreshTable,
 
 const mapStateToProps = (state) => {
     return {
-        notifications: state
+        notifications: state.notifications
     }
 }
 
