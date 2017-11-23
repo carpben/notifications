@@ -60,7 +60,7 @@ class NotificationRow extends React.Component {
             />*/}
           </td>
            <td className="details-column">
-             <TextField
+            {/* <TextField
                   id="multiline-flexible"
                   multiline
                   rowsMax="10"
@@ -71,7 +71,13 @@ class NotificationRow extends React.Component {
                 //   className={classes.textField}
                 className="TextField"
                   // margin="normal"
-             />
+             />*/}
+             <StyledTextField2
+            txt = {details}
+            field = "details"
+            editField = {editField}
+            id={id}
+            />
           </td>
            <td><span className={"notification-done glyphicon glyphicon-ok " + notificationDoneclass } onClick={(e)=>toggleComplete(id)} ></span></td>
            <td><span className="notification-remove glyphicon glyphicon-remove" onClick={(e)=>deleteNotification(id)}></span></td>
