@@ -5,7 +5,7 @@ import TextField from 'material-ui/TextField';
 import 'react-datepicker/dist/react-datepicker.css'
 import ReactStars from 'react-stars'
 import { withStyles } from 'material-ui/styles';
-import StyledTextField2 from './StyledTextField2'
+import StyledTextField from './StyledTextField'
 
 
 class NotificationRow extends React.Component {
@@ -14,17 +14,12 @@ class NotificationRow extends React.Component {
    }
 
    onStarValueChange = (newRating) => {this.props.changeImportance(this.props.id, newRating)}
-   onDatePickerChange = (newDate) => {
-      console.log(newDate.format())
-      console.log('moment.max returns')
-      console.log(moment.max(this.props.date, newDate).format())
-      this.props.changeDate(this.props.id, newDate)
-   }
+   onDatePickerChange = (newDate) =>   this.props.changeDate(this.props.id, newDate)
+
    render (){
       const {id, date, importance, title, nextAction, details, completed, toggleComplete, deleteNotification, editField} = this.props
 
       const notificationDoneclass = completed? 'notificationDone' : '' ;
-
 
       return (
          <tr >
@@ -35,14 +30,14 @@ class NotificationRow extends React.Component {
              <ReactStars count={5} size={19} color2={'#ffd700'} value={importance} onChange={this.onStarValueChange} />
            </td>
            <td className="title-column">
-              <StyledTextField2
+              <StyledTextField
                   txt = {title}
                   editField = {editField}
                   id={id}
                />
            </td>
            <td className="next-column">
-              <StyledTextField2
+              <StyledTextField
                  txt = {nextAction}
                  field = "nextAction"
                  editField = {editField}
@@ -51,7 +46,7 @@ class NotificationRow extends React.Component {
           </td>
           <td className="details-column">
 
-            <StyledTextField2
+            <StyledTextField
                txt = {details}
                field = "details"
                editField = {editField}

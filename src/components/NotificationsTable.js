@@ -2,12 +2,6 @@ import React from 'react'
 import NotificationRow from './NotificationRow.js'
 import './NotificationTable.css'
 
-// const styles = {
-//     thead: {
-//         "tr:border-bottom: 1px solid #555;",
-//         th: "border-right: 1px dashed #555; border-left: 1px dashed #555;"
-//     }
-// }
 
 const NotificationsTable = ({notifications, addNotification, refreshTable, toggleComplete, deleteNotification, editField, changeImportance, changeDate}) => (
     <table className="table NotificationsTable">
