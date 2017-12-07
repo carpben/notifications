@@ -57,3 +57,8 @@ export const editMessage = (newMessage) => {
       newMessage
    }
 }
+
+export const setUser = (user) => ({
+   type:'SET_USER',
+   user
+})

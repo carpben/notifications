@@ -1,9 +1,15 @@
 import React from 'react'
+import './Header.css'
+import SignButtonContainer from '../containers/SignButtonContainer.js'
+
 
 const Header = () => (
         <header>
-            <h1>Next</h1>
-            <h3>Smart to-do app</h3>
+            <h1>
+               Next
+               <small>A smart to-do app</small>
+            </h1>
+            <SignButtonContainer />
         </header>
     )
 

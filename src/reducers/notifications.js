@@ -65,7 +65,7 @@ const notifications = (state = start, action) => {
            }
          ]
       case 'NOTIFICATION_DELETE':
-         return state.filter((object)=>object.id!=action.id);
+         return state.filter((object)=>object.id!==action.id);
       case 'TOGGLE_COMPLETE':
          return state.map( notification =>
             (notification.id === action.id)? {...notification, completed: !notification.completed}
@@ -94,7 +94,7 @@ const notifications = (state = start, action) => {
          {
             const {id, newImportanceValue}=action
             const newState = state.map( not => {
-               if (not.id!=id) {return not}
+               if (not.id!==id) {return not}
                else {
                   not.importance=newImportanceValue
                   return not

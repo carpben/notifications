@@ -1,11 +1,9 @@
 import React from 'react'
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
-import TextField from 'material-ui/TextField';
 import 'react-datepicker/dist/react-datepicker.css'
 import ReactStars from 'react-stars'
-import { withStyles } from 'material-ui/styles';
-import StyledTextField from './StyledTextField'
+import Textarea from "react-textarea-autosize";
 
 
 class NotificationRow extends React.Component {
@@ -30,29 +28,28 @@ class NotificationRow extends React.Component {
              <ReactStars count={5} size={19} color2={'#ffd700'} value={importance} onChange={this.onStarValueChange} />
            </td>
            <td className="title-column">
-              <StyledTextField
-                  txt = {title}
-                  field = "title"
-                  editField = {editField}
-                  id={id}
+              <Textarea
+              className="textarea1"
+                  value = {title}
+                  onChange={(e)=> editField(id, "title", e.target.value )}
                />
            </td>
            <td className="next-column">
-              <StyledTextField
-                 txt = {nextAction}
-                 field = "nextAction"
-                 editField = {editField}
-                 id={id}
+              <Textarea
+              className="textarea1"
+
+                 value = {nextAction}
+                 onChange={(e)=> editField(id, "nextAction", e.target.value )}
               />
           </td>
           <td className="details-column">
+             <Textarea
+             className="textarea1"
 
-            <StyledTextField
-               txt = {details}
-               field = "details"
-               editField = {editField}
-               id={id}
-            />
+                value = {details}
+                onChange={(e)=> editField(id, "details", e.target.value )}
+             />
+
           </td>
            <td><span className={"notification-done glyphicon glyphicon-ok " + notificationDoneclass } onClick={(e)=>toggleComplete(id)} ></span></td>
            <td><span className="notification-remove glyphicon glyphicon-remove" onClick={(e)=>deleteNotification(id)}></span></td>
