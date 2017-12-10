@@ -1,0 +1,63 @@
+.NotificationsTable {
+   border-collapse: collapse;
+      th {
+         border-bottom: 1px solid #555;
+      }
+    // @media (max-width: 700px) {
+    //     table, td, tr, th {
+    //             display: block;
+    //     }
+    // }
+   // .next-column, .details-column, .title-column{
+   //    >div>div>div:before, div>div>div:after {
+   //       height: 0;
+   //    }
+   // }
+   .date-column {
+      .react-datepicker-wrapper {
+         width: 85px;
+      }
+   }
+   .importance-column {
+      >div {
+         width: 110px;
+      }
+   }
+   input {
+      border: none;
+   }
+   textarea {
+      width: 100%;
+      resize: none;
+      border: none;
+   }
+   .title-column {
+      width: 20%;
+   }
+   .next-column {
+      width: 40%;
+   }
+   .details-column {
+      width: 40%;
+   }
+   .notification-remove {
+       color: #700;
+       text-align: center;
+       font-size: 20px
+   }
+   .notification-remove:hover {
+       color:#b00;
+   }
+   .notification-done {
+       color: #070;
+       text-align: center;
+       font-size: 20px;
+       &:hover, &.notificationDone{
+          color: #0b0;
+
+       }
+
+   }
+
+   }
+}

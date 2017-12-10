@@ -7,15 +7,12 @@ import Textarea from "react-textarea-autosize";
 
 
 class NotificationRow extends React.Component {
-   constructor (props){
-      super (props)
-   }
 
-   onStarValueChange = (newRating) => {this.props.changeImportance(this.props.id, newRating)}
-   onDatePickerChange = (newDate) =>   this.props.changeDate(this.props.id, newDate)
+   onStarValueChange = (newRating) => {this.props.changeImportance(this.props.notKey, newRating)}
+   onDatePickerChange = (newDate) =>   this.props.changeDate(this.props.notKey, newDate)
 
    render (){
-      const {id, date, importance, title, nextAction, details, completed, toggleComplete, deleteNotification, editField} = this.props
+      const {notKey, date, importance, title, nextAction, details, completed, toggleComplete, deleteNotification, editField} = this.props
 
       const notificationDoneclass = completed? 'notificationDone' : '' ;
 
@@ -31,7 +28,7 @@ class NotificationRow extends React.Component {
               <Textarea
               className="textarea1"
                   value = {title}
-                  onChange={(e)=> editField(id, "title", e.target.value )}
+                  onChange={(e)=> editField(notKey, "title", e.target.value )}
                />
            </td>
            <td className="next-column">
@@ -39,7 +36,7 @@ class NotificationRow extends React.Component {
               className="textarea1"
 
                  value = {nextAction}
-                 onChange={(e)=> editField(id, "nextAction", e.target.value )}
+                 onChange={(e)=> editField(notKey, "nextAction", e.target.value )}
               />
           </td>
           <td className="details-column">
@@ -47,12 +44,12 @@ class NotificationRow extends React.Component {
              className="textarea1"
 
                 value = {details}
-                onChange={(e)=> editField(id, "details", e.target.value )}
+                onChange={(e)=> editField(notKey, "details", e.target.value )}
              />
 
           </td>
-           <td><span className={"notification-done glyphicon glyphicon-ok " + notificationDoneclass } onClick={(e)=>toggleComplete(id)} ></span></td>
-           <td><span className="notification-remove glyphicon glyphicon-remove" onClick={(e)=>deleteNotification(id)}></span></td>
+           <td><span className={"notification-done glyphicon glyphicon-ok " + notificationDoneclass } onClick={(e)=>toggleComplete(notKey, completed)} ></span></td>
+           <td><span className="notification-remove glyphicon glyphicon-remove" onClick={(e)=>deleteNotification(notKey)}></span></td>
          </tr>
       )
    }

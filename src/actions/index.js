@@ -1,52 +1,111 @@
-let notificationId = 0
-export const addNotification = () => {
-  return {
-    type: 'ADD_NOTIFICATION',
-    id: notificationId++,
-  }
-}
+import {fireDB} from '../fire.js'
 
-export const notificationDeleteAction = (id) => {
-  return {
-    type: 'NOTIFICATION_DELETE',
-    id
-  }
-}
+export const createUserState = (userId) =>
+   (dispatch) => {
+      const userNotsDBRef = fireDB.ref('notifications/' + userId);
+
+      // userNotsDBRef.set({}) //empty userDB
+      userNotsDBRef.once('value').then ( snapshot => {
+         const userData = snapshot.val()
+         console.log('here is a snapshot of userDb ', userData)
+         let newState = []
+         for (let notKey in userData){
+            let notification = {...userData[notKey]}
+            notification.notKey=notKey
+            newState.push(notification)
+         }
+         dispatch ({
+            type: "CREATE_USER_STATE",
+            newState
+         })
+      })
+   }
 
 
-export const toggleComplete = id => {
-  return {
-    type: 'TOGGLE_COMPLETE',
-    id
-  }
-}
+
+export const addNewNotification = () =>
+   (dispatch, getState) => {
+      // const userId = getState().user && getState().user.uid;
+      const userId = getState().user.uid;
+
+      const newNotification = {
+         date:"",
+         importance:3,
+         title:"",
+         next:"",
+         details:"",
+         completed: false
+      }
+      const notKey = fireDB.ref(`notifications/${userId}`).push(newNotification).key;
+      newNotification.notKey = notKey
+      dispatch ({
+       type: 'ADD_NOTIFICATION',
+       newNotification
+     })
+   }
+
+
+export const deleteNotification = (notKey) =>
+   (dispatch, getState) => {
+      console.log("deleteNotificationAction runs")
+      console.log("notKey is ", notKey)
+      // const userId = getState().user && getState().user.uid;
+      const userId = getState().user.uid;
+      fireDB.ref(`notifications/${userId}/${notKey}`).remove();
+      console.log("deleteNotification send to DB")
+      dispatch ({
+        type: 'DELETE_NOTIFICATION',
+        notKey
+      })
+      console.log("Delte Dispatched")
+   }
+
+
+export const toggleComplete = (notKey, oldCompleted) =>
+   (dispatch, getState) => {
+      const userId = getState().user.uid;
+      const newCompleted = !oldCompleted
+      fireDB.ref(`notifications/${userId}/${notKey}/completed`).set(newCompleted)
+      dispatch({
+         type: 'TOGGLE_COMPLETE',
+         notKey
+      })
+   }
+
 
 export const refreshTable = () => {
    return {type: 'REFRESH_TABLE'}
 }
 
-export const editField = (id, field, text) => {
-   return {
-      type:'EDIT_FIELD',
-      id,
-      field,
-      text
+export const editField = (notKey, field, text) =>
+   (dispatch, getState) => {
+      console.log("editField runs")
+      const userId = getState().user.uid;
+      fireDB.ref(`notifications/${userId}/${notKey}/${field}`).set(text)
+      dispatch({
+         type:'EDIT_FIELD',
+         notKey,
+         field,
+         text
+      })
    }
-}
 
-export const changeImportance = (id, newImportanceValue) => {
-   console.log(newImportanceValue)
-   return ({
-      type: 'CHANGE_IMPORTANCE_VALUE',
-      id,
-      newImportanceValue
-   })
-}
+export const changeImportance = (notKey, newImportanceValue) =>
+   (dispatch, getState) => {
+      console.log("newImportanceValue", newImportanceValue)
+      const userId = getState().user.uid;
+      fireDB.ref(`notifications/${userId}/${notKey}/importance`).set(newImportanceValue)
+      dispatch({
+         type: 'CHANGE_IMPORTANCE_VALUE',
+         notKey,
+         newImportanceValue
+      })
+   }
 
-export const changeDate = (id, newDate) => {
+export const changeDate = (notKey, newDate) => {
    return {
       type: 'CHANGE_DATE',
-      id,
+      notKey,
       newDate
    }
 }

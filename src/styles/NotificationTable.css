@@ -28,5 +28,5 @@
     color: #070;
     text-align: center;
     font-size: 20px; }
-  .NotificationsTable .notification-done:hover {
-    color: #0b0; }
+    .NotificationsTable .notification-done:hover, .NotificationsTable .notification-done:active {
+      color: #0b0; }

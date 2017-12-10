@@ -1,3 +1,10 @@
+.inner-w {
+   width: 95%;
+   margin: auto;
+}
+main {
+   padding-top: 2.5%
+}
 .notification-add {
   color: #070;
   cursor: pointer;

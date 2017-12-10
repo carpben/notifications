@@ -1,0 +1,38 @@
+
+.sign-in-screen {
+    display: flex;
+    width: 100%;
+    height: stretch;
+   border-bottom: 2px solid #009;
+   header {
+      flex-basis: 100%;
+      margin-top:auto;
+      margin-bottom: auto;
+      display: flex;
+      // justify-content: space-between;
+      align-items: center;
+      padding: 80px 0;
+      .take50 {
+         flex-basis: 50%;
+      }
+      .flex-w {
+         width: 650px
+      }
+   }
+   h1 {
+      color: white;
+      margin: 0;
+      font-size: 76px
+   }
+   h3 {
+         color: white;
+         margin: 0;
+         font-size:40px;
+   }
+   .sign-btn {
+      color: white;
+      &:hover, &:focus {
+         color:white
+      }
+   }
+}

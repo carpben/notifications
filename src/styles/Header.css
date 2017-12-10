@@ -1,0 +1,19 @@
+header {
+  background-color: #00f;
+  border-bottom: 2px solid #009;
+  padding: 15px 5px; }
+  header .flex-w {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 450px; }
+  header h1 {
+    color: white;
+    margin: 0; }
+  header h3 {
+    color: white;
+    margin: 0; }
+  header .sign-btn {
+    color: white; }
+    header .sign-btn:hover, header .sign-btn:focus {
+      color: white; }

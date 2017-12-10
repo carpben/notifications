@@ -1,24 +1,25 @@
 import { connect } from 'react-redux'
 import NotificationsTable from '../components/NotificationsTable'
-import {addNotification, notificationDeleteAction, toggleComplete, refreshTable, editField, changeImportance, changeDate} from '../actions'
+import {addNewNotification, deleteNotification, toggleComplete, refreshTable, editField, changeImportance, changeDate} from '../actions'
 
 const mapStateToProps = (state) => {
     return {
-        notifications: state.notifications
+        notifications: state.notifications,
+        user: state.user
     }
 }
 
 const mapDispatchToProps = dispatch => ({
-    addNotification: () => {
-        console.log('onClick runs')
-        dispatch(addNotification())
+    addNotification: (userId) => {
+
+      dispatch(addNewNotification(userId))
     },
     refreshTable: () => dispatch(refreshTable()),
-    toggleComplete: (id) => dispatch(toggleComplete(id)),
-    deleteNotification: (id) => dispatch(notificationDeleteAction(id)),
-    editField: (id, field, text) => dispatch(editField(id,field,text)),
-    changeImportance: (id, newImportanceValue) => dispatch(changeImportance(id, newImportanceValue)),
-    changeDate: (id, newDate) => dispatch(changeDate(id, newDate))
+    toggleComplete: (notKey, completed) => dispatch(toggleComplete(notKey, completed)),
+    deleteNotification: (notKey) => dispatch(deleteNotification(notKey)),
+    editField: (notKey, field, text) => dispatch(editField(notKey,field,text)),
+    changeImportance: (notKey, newImportanceValue) => dispatch(changeImportance(notKey, newImportanceValue)),
+    changeDate: (notKey, newDate) => dispatch(changeDate(notKey, newDate))
 })
 
 const NotificationsTableContainer = connect(mapStateToProps, mapDispatchToProps)(NotificationsTable)
