@@ -14,13 +14,15 @@
    //    }
    // }
    .date-column {
-      .react-datepicker-wrapper {
+      input {
          width: 85px;
       }
    }
    .importance-column {
+      padding-left: 10px;
+      padding-right: 10px;
       >div {
-         width: 110px;
+         width: 85px;
       }
    }
    input {
@@ -59,5 +61,4 @@
 
    }
 
-   }
 }

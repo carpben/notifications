@@ -1,7 +1,3 @@
-import moment from 'moment'
-
-
-
 
 const notifications = (state = [], action) => {
    switch (action.type) {

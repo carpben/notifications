@@ -102,13 +102,17 @@ export const changeImportance = (notKey, newImportanceValue) =>
       })
    }
 
-export const changeDate = (notKey, newDate) => {
-   return {
-      type: 'CHANGE_DATE',
-      notKey,
-      newDate
+export const changeDate = (notKey, newDate) =>
+   (dispatch, getState) => {
+      console.log("changeDate runs, ", newDate)
+      const userId = getState().user.uid;
+      // fireDB.ref(`notifications/${userId}/${notKey}/date`).set(newDate)
+      return {
+         type: 'CHANGE_DATE',
+         notKey,
+         newDate
+      }
    }
-}
 
 export const editMessage = (newMessage) => {
    return {
