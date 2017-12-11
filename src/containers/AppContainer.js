@@ -33,7 +33,7 @@ class App extends Component {
    render () {
       if (this.props.user){
          return (
-            <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
+            <MuiThemeProvider >
                <div className="App-w">
                   <Header />
                   <main className="inner-w">
