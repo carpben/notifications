@@ -49,6 +49,7 @@ const notifications = (state = [], action) => {
          }
       case 'CHANGE_DATE':
       {
+         console.log("changeDateReducer runs")
          const {notKey, newDate} = action
          const newState = [...state]
          const index = newState.findIndex( not => not.notKey===notKey)

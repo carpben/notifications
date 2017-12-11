@@ -1,4 +1,5 @@
 import {fireDB} from '../fire.js'
+import moment from 'moment'
 
 export const createUserState = (userId) =>
    (dispatch) => {
@@ -29,7 +30,6 @@ export const addNewNotification = () =>
       const userId = getState().user.uid;
 
       const newNotification = {
-         date:"",
          importance:3,
          title:"",
          next:"",
@@ -38,6 +38,7 @@ export const addNewNotification = () =>
       }
       const notKey = fireDB.ref(`notifications/${userId}`).push(newNotification).key;
       newNotification.notKey = notKey
+      newNotification.date = moment(),
       dispatch ({
        type: 'ADD_NOTIFICATION',
        newNotification
@@ -107,11 +108,11 @@ export const changeDate = (notKey, newDate) =>
       console.log("changeDate runs, ", newDate)
       const userId = getState().user.uid;
       // fireDB.ref(`notifications/${userId}/${notKey}/date`).set(newDate)
-      return {
+      dispatch ({
          type: 'CHANGE_DATE',
          notKey,
          newDate
-      }
+      })
    }
 
 export const editMessage = (newMessage) => {
