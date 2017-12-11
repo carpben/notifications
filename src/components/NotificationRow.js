@@ -2,8 +2,7 @@ import React from 'react'
 import 'react-datepicker/dist/react-datepicker.css'
 import ReactStars from 'react-stars'
 import TextareaAutosize from 'react-autosize-textarea';
-import Date1 from './date1.js'
-import Date2 from './date2.js'
+import Date3 from './Date3.js'
 
 
 const CalendarIcon = () => <span className={"glyphicon glyphicon-calendar "}></span>
@@ -54,7 +53,8 @@ class NotificationRow extends React.Component {
           </td>
              <td  className="date-column">
                {/*<Date1 date={date} notKey={notKey} changeDate={changeDate}/>
-               <Date2 date={date} notKey={notKey} changeDate={changeDate}/>*/}
+               <Date2 */}
+               <Date3 date={date} notKey={notKey} changeDate={changeDate}/>
              </td>
            <td><span className={"notification-done glyphicon glyphicon-ok " + notificationCompletedClass } onClick={(e)=>toggleComplete(notKey)} ></span></td>
            <td><span className="notification-remove glyphicon glyphicon-remove" onClick={(e)=>deleteNotification(notKey)}></span></td>

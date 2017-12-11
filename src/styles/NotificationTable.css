@@ -2,8 +2,20 @@
   border-collapse: collapse; }
   .NotificationsTable th {
     border-bottom: 1px solid #555; }
-  .NotificationsTable .date-column input {
-    width: 85px; }
+  .NotificationsTable .date3 {
+    text-align: center;
+    font-size: 20px;
+    color: #007;
+    position: relative; }
+  .NotificationsTable .day-picker-w {
+    position: absolute;
+    background-color: white;
+    border: 5px solid #007;
+    border-radius: 10px;
+    top: -60px;
+    right: -60px;
+    z-index: 100;
+    padding: 12px; }
   .NotificationsTable .importance-column {
     padding-left: 10px;
     padding-right: 10px; }

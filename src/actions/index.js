@@ -5,7 +5,7 @@ export const createUserState = (userId) =>
    (dispatch) => {
       const userNotsDBRef = fireDB.ref('notifications/' + userId);
 
-      // userNotsDBRef.set({}) //empty userDB
+      userNotsDBRef.set({}) //empty userDB
       userNotsDBRef.once('value').then ( snapshot => {
          const userData = snapshot.val()
          console.log('here is a snapshot of userDb ', userData)
@@ -34,11 +34,11 @@ export const addNewNotification = () =>
          title:"",
          next:"",
          details:"",
-         completed: false
+         completed: false,
+         date:""
       }
       const notKey = fireDB.ref(`notifications/${userId}`).push(newNotification).key;
       newNotification.notKey = notKey
-      newNotification.date = moment(),
       dispatch ({
        type: 'ADD_NOTIFICATION',
        newNotification
@@ -107,7 +107,7 @@ export const changeDate = (notKey, newDate) =>
    (dispatch, getState) => {
       console.log("changeDate runs, ", newDate)
       const userId = getState().user.uid;
-      // fireDB.ref(`notifications/${userId}/${notKey}/date`).set(newDate)
+      fireDB.ref(`notifications/${userId}/${notKey}/date`).set(newDate)
       dispatch ({
          type: 'CHANGE_DATE',
          notKey,
