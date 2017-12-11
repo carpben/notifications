@@ -7,6 +7,11 @@ import {connect} from 'react-redux'
 import '../styles/App.css'
 import {setUser, createUserState} from '../actions'
 import {fireAuth} from '../fire.js'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+// import {Card} from 'material-ui/Card';
+// import Drawer from 'material-ui/Drawer';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 
 
 class App extends Component {
@@ -28,12 +33,23 @@ class App extends Component {
    render () {
       if (this.props.user){
          return (
-            <div>
-               <Header />
-               <main className="inner-w">
-                  <NotificationsTableContainer />
-               </main>
-           </div>
+            <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
+               <div className="App-w">
+                  <Header />
+                  <main className="inner-w">
+         {/*            <Drawer
+                       docked={false}
+                       width="200px"
+                       open={true}
+                       openSecondary={true}
+                     >
+                        <p>a'sdfk;akdfkl;;saldkf'kl;sadf;lk;'asdklf asdfk;kl;asdf
+                        asdfasdfsadfasdfasdf    sdaf;l;'klasd;flk  sadf;lk;kl;klasdf ;lk l;jksadf'l;k;'klasdf ;lksdf'</p>
+                     </Drawer>*/}
+                        <NotificationsTableContainer />
+                  </main>
+               </div>
+           </MuiThemeProvider>
          )
       }
       return <SignInScreen />

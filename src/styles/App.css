@@ -1,9 +1,13 @@
+.App-w {
+   min-height: 100vh;
+   background-color:#e8e8e8;
+}
 .inner-w {
    width: 95%;
    margin: auto;
 }
 main {
-   padding-top: 2.5%
+   padding-top: 2.5%;
 }
 .notification-add {
   color: #070;

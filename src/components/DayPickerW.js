@@ -1,5 +1,6 @@
 import React from 'react';
 import DayPicker from 'react-day-picker';
+import onClickOutside from 'react-onclickoutside'
 
 import 'react-day-picker/lib/style.css';
 
@@ -17,6 +18,10 @@ class DayPickerW extends React.Component {
      this.props.changeDate(this.props.notKey, day)
     // this.setState({ selectedDay: day });
   }
+  handleClickOutside = () => {
+     this.props.hideDisplay()
+
+ }
   render() {
      const date = this.props.date? this.props.date: undefined;
     return (
@@ -25,14 +30,14 @@ class DayPickerW extends React.Component {
           onDayClick={this.handleDayClick}
           selectedDays={date}
         />
-        {date ? (
+        {/*date ? (
           <p>You clicked {date.toLocaleDateString()}</p>
         ) : (
           <p>Please select a day.</p>
-        )}
+       )*/}
       </div>
     );
   }
 }
 
-export default DayPickerW
+export default onClickOutside(DayPickerW)

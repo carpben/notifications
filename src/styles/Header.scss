@@ -2,11 +2,16 @@ header {
    background-color: #00f;
    border-bottom: 2px solid #009;
    padding: 15px 5px;
-   .flex-w {
+   .inner-w {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      width: 450px;
+   }
+   .left-w {
+      flex-basis: 320px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
    }
    h1 {
       color: white;
@@ -16,7 +21,13 @@ header {
          color: white;
          margin: 0
    }
-   .sign-btn {
+   .right-w{
+      flex-basis: 140px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+   }
+   .sign-btn, .about-btn {
       color: white;
       &:hover, &:focus {
          color:white

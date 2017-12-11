@@ -1,5 +1,6 @@
 .NotificationsTable {
-  border-collapse: collapse; }
+  border-collapse: collapse;
+  background-color: white; }
   .NotificationsTable th {
     border-bottom: 1px solid #555; }
   .NotificationsTable .date3 {

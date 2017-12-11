@@ -7,11 +7,13 @@ import AboutButton from './AboutButton.js'
 const Header = () => (
         <header>
             <div className="inner-w">
-               <div className="flex-w">
+               <div className="left-w" >
                   <h1>Next</h1>
                   <h3>A smart to-do app</h3>
-                  <SignButtonContainer />
+               </div>
+               <div className="right-w">
                   <AboutButton />
+                  <SignButtonContainer />
                </div>
             </div>
         </header>

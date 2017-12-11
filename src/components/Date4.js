@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
-import DayPickerW from './DayPickerW.js'
+import DatePicker from 'material-ui/DatePicker';
 
-class Date3 extends Component {
+
+class Date4 extends Component {
    constructor (props) {
       super (props)
       this.state = {
@@ -27,10 +28,11 @@ class Date3 extends Component {
          <div className="date3">
             {dayIcon}
             {this.state.displayDayPicker?
-               <DayPickerW changeDate={this.changeDate} notKey={this.props.notKey} date={this.props.date} hideDisplay={this.hideDisplay}  className="day-picker-w" /> : ""
+               <DatePicker hintText="Portrait Inline Dialog" container="inline" />:""
+               // <DayPickerW changeDate={this.changeDate} notKey={this.props.notKey} date={this.props.date} hideDisplay={this.hideDisplay}  className="day-picker-w" /> : ""
             }
          </div>)
    }
 }
 
-export default Date3
+export default Date4

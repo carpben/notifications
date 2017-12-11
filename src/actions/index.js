@@ -1,11 +1,10 @@
 import {fireDB} from '../fire.js'
-import moment from 'moment'
 
 export const createUserState = (userId) =>
    (dispatch) => {
       const userNotsDBRef = fireDB.ref('notifications/' + userId);
 
-      userNotsDBRef.set({}) //empty userDB
+      // userNotsDBRef.set({}) //empty userDB
       userNotsDBRef.once('value').then ( snapshot => {
          const userData = snapshot.val()
          console.log('here is a snapshot of userDb ', userData)
@@ -13,11 +12,13 @@ export const createUserState = (userId) =>
          for (let notKey in userData){
             let notification = {...userData[notKey]}
             notification.notKey=notKey
+            notification.date = new Date(notification.date)
+            console.log(notification.date)
             newState.push(notification)
          }
          dispatch ({
             type: "CREATE_USER_STATE",
-            newState
+            newState,
          })
       })
    }
@@ -34,10 +35,11 @@ export const addNewNotification = () =>
          title:"",
          next:"",
          details:"",
-         completed: false,
-         date:""
+         date:"",
+         completed: false
       }
       const notKey = fireDB.ref(`notifications/${userId}`).push(newNotification).key;
+      newNotification.date=""
       newNotification.notKey = notKey
       dispatch ({
        type: 'ADD_NOTIFICATION',
@@ -107,7 +109,8 @@ export const changeDate = (notKey, newDate) =>
    (dispatch, getState) => {
       console.log("changeDate runs, ", newDate)
       const userId = getState().user.uid;
-      fireDB.ref(`notifications/${userId}/${notKey}/date`).set(newDate)
+      const newTimeStamp = newDate.getTime()
+      fireDB.ref(`notifications/${userId}/${notKey}/date`).set(newTimeStamp)
       dispatch ({
          type: 'CHANGE_DATE',
          notKey,
