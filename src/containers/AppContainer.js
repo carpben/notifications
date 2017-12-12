@@ -14,6 +14,7 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 import ControlPanelContainer from './ControlPanelContainer.js'
 import AboutDrawContainer from './AboutDrawContainer'
+import Paper from 'material-ui/Paper';
 
 
 class App extends Component {
@@ -40,9 +41,9 @@ class App extends Component {
                   <Header />
                   {this.props.showAbout? <AboutDrawContainer /> : ""}
                   <ControlPanelContainer />
-                  <main className="inner-w">
+                  <main className="inner-w card1">
 
-                        <NotificationsTableContainer />
+                           <NotificationsTableContainer />
                   </main>
                </div>
            </MuiThemeProvider>

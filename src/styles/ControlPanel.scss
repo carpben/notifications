@@ -4,17 +4,24 @@
       margin-top: 1.5%;
       display:flex;
    }
+   // .tabs {
+   //    width: 750px;
+   // }
    .flex-w {
       display: flex;
-      width: 410px;
+      width: 580px;
       justify-content: space-between;
       align-items: center;
+
    }
    .display-control {
       :active, :hover {
          background-color: #00c!important;
          color: white;
          font-weight: 600;
+      }
+      .btn {
+         width: 120px;
       }
    }
    .add-btn {

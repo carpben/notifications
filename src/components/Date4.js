@@ -11,6 +11,7 @@ class Date4 extends Component {
    }
    showDisplay = () => {
       this.setState({displayDayPicker:true})
+      this.dp.openDialog();
    }
    hideDisplay = () => {
       this.setState({displayDayPicker:false})
@@ -27,10 +28,8 @@ class Date4 extends Component {
       return (
          <div className="date4">
             {dayIcon}
-            {this.state.displayDayPicker?
-               <DatePicker  container="inline" />:""
-               // <DayPickerW changeDate={this.changeDate} notKey={this.props.notKey} date={this.props.date} hideDisplay={this.hideDisplay}  className="day-picker-w" /> : ""
-            }
+
+               <DatePicker  container="inline" ref={ dpInstance => this.dp = dpInstance } />
          </div>)
    }
 }

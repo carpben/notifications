@@ -2,7 +2,17 @@ import React from 'react'
 import {ButtonToolbar, ToggleButtonGroup, ToggleButton, Button} from 'react-bootstrap'
 import '../styles/ControlPanel.css'
 import {connect} from 'react-redux'
-import {setDisplayMode} from '../actions'
+import {setDisplayMode, addNewNotification} from '../actions'
+import {Tabs, Tab} from 'material-ui/Tabs';
+import DISPLAY_MODE from '../CONSTS';
+import FloatingActionButton from 'material-ui/FloatingActionButton';
+import ContentAdd from 'material-ui/svg-icons/content/add';
+
+const style = {
+  marginRight: 20,
+  color: 'white',
+  fontSize:40
+};
 
 const ControlPanel = (props) => {
    console.log("ControlPanel received displayMode", props.displayMode)
@@ -20,17 +30,24 @@ const ControlPanel = (props) => {
                   <ToggleButton value={3}>Done</ToggleButton>
                </ToggleButtonGroup>
             </ButtonToolbar>
-            <Button className="add-btn"><label>+</label></Button>
+
+            <FloatingActionButton style={style} backgroundColor="green" onClick={props.addNewNotification}>
+               +
+            </FloatingActionButton>
          </div>
 
       </section>
    )
 }
 
+
 const mapDispatchToProps = dispatch => ({
    setDisplayMode: val => {
       dispatch(setDisplayMode(val))
-   }
+   },
+   addNewNotification: () => {
+     dispatch(addNewNotification())
+   },
 })
 
 const mapStateToProps = (state) => ({

@@ -4,7 +4,7 @@
 
 .ControlPanel .flex-w {
   display: flex;
-  width: 410px;
+  width: 580px;
   justify-content: space-between;
   align-items: center; }
 
@@ -12,6 +12,9 @@
   background-color: #00c !important;
   color: white;
   font-weight: 600; }
+
+.ControlPanel .display-control .btn {
+  width: 120px; }
 
 .ControlPanel .add-btn {
   width: 50px;

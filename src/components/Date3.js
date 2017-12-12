@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import DayPickerW from './DayPickerW.js'
+import DayPickerW from './DayPickerW.js';
 
 class Date3 extends Component {
    constructor (props) {

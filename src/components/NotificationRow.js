@@ -53,7 +53,7 @@ class NotificationRow extends React.Component {
              <td  className="date-column">
                {/*<Date1 date={date} notKey={notKey} changeDate={changeDate}/>
                <Date2 */}
-               <Date4 date={date} notKey={notKey} changeDate={changeDate}/>
+               <Date3 date={date} notKey={notKey} changeDate={changeDate}/>
              </td>
            <td><span className={"notification-done glyphicon glyphicon-ok " + notificationCompletedClass } onClick={(e)=>toggleComplete(notKey)} ></span></td>
            <td><span className="notification-remove glyphicon glyphicon-remove" onClick={(e)=>deleteNotification(notKey)}></span></td>
