@@ -129,3 +129,14 @@ export const setUser = (user) => ({
    type:'SET_USER',
    user
 })
+
+export const setDisplayMode = (val) => {
+   return {
+      type: "SET_DISPLAY_MODE",
+      val: val
+   }
+}
+
+export const toggleAboutDraw = () => ({
+   type: "TOGGLE_ABOUT_DRAW"
+})

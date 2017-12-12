@@ -1,9 +1,14 @@
 import React from 'react'
 import NotificationRow from './NotificationRow.js'
 import '../styles/NotificationTable.css'
+import FloatingActionButton from 'material-ui/FloatingActionButton';
 
+const style = {
+  color: 'white',
+  fontSize:30
+};
 
-const NotificationsTable = ({notifications, addNotification, refreshTable, toggleComplete, deleteNotification, editField, changeImportance, changeDate, user}) => (
+const NotificationsTable = ({notifications, addNewNotification, refreshTable, toggleComplete, deleteNotification, editField, changeImportance, changeDate, user}) => (
    <div>
 
         <table className="table NotificationsTable">
@@ -14,9 +19,9 @@ const NotificationsTable = ({notifications, addNotification, refreshTable, toggl
            <th className="importance-column">Importance</th>
            <th className="next-column">Next Action</th>
            <th className="details-column">More Details</th>
-           <th className="date-column">snooze</th>
-           <th className="icon-1-column"><span className="notification-add glyphicon glyphicon-plus" onClick={()=>addNotification(user.uid)}></span></th>
-           <th className="icon-2-column"><span className="table-refresh glyphicon glyphicon-refresh" onClick={refreshTable}></span></th>
+           <th className="date-column"></th>
+           <th className="icon-1-column"></th>
+           <th className="icon-2-column"></th>
          </tr>
         </thead>
         <tbody>

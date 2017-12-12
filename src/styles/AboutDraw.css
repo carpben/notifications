@@ -1,0 +1,13 @@
+.about-draw {
+  padding: 35px; }
+  .about-draw h2 {
+    font-size: 33px;
+    line-height: 1.5;
+    margin-top: 15px;
+    margin-bottom: 15px; }
+  .about-draw p {
+    font-size: 17px;
+    line-height: 1.35;
+    margin-top: 20px; }
+  .about-draw footer {
+    margin-top: 100px; }

@@ -1,7 +1,7 @@
 import React from 'react'
 import '../styles/Header.css'
 import SignButtonContainer from '../containers/SignButtonContainer.js'
-import AboutButton from './AboutButton.js'
+import AboutButtonContainer from '../containers/AboutButtonContainer.js'
 
 
 const Header = () => (
@@ -12,7 +12,7 @@ const Header = () => (
                   <h3>A smart to-do app</h3>
                </div>
                <div className="right-w">
-                  <AboutButton />
+                  <AboutButtonContainer />
                   <SignButtonContainer />
                </div>
             </div>
