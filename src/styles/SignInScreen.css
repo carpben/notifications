@@ -13,7 +13,10 @@
     .sign-in-screen header .take50 {
       flex-basis: 50%; }
     .sign-in-screen header .flex-w {
-      width: 650px; }
+      width: 650px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center; }
   .sign-in-screen h1 {
     color: white;
     margin: 0;

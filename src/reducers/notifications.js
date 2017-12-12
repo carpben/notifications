@@ -1,4 +1,5 @@
 
+
 const notifications = (state = [], action) => {
    switch (action.type) {
       case "CREATE_USER_STATE":
@@ -21,7 +22,7 @@ const notifications = (state = [], action) => {
             (not1, not2) => not2.importance-not1.importance
          ).sort(
             (not1, not2) => not1.date-not2.date
-         )
+         )  
          .sort(
             (not0, not1) => not0.completed-not1.completed
          )

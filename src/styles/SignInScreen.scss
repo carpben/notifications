@@ -16,7 +16,10 @@
          flex-basis: 50%;
       }
       .flex-w {
-         width: 650px
+         width: 650px;
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
       }
    }
    h1 {
