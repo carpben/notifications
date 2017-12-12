@@ -25,10 +25,10 @@ class Date4 extends Component {
 
 
       return (
-         <div className="date3">
+         <div className="date4">
             {dayIcon}
             {this.state.displayDayPicker?
-               <DatePicker hintText="Portrait Inline Dialog" container="inline" />:""
+               <DatePicker  container="inline" />:""
                // <DayPickerW changeDate={this.changeDate} notKey={this.props.notKey} date={this.props.date} hideDisplay={this.hideDisplay}  className="day-picker-w" /> : ""
             }
          </div>)

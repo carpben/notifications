@@ -9,9 +9,11 @@ import {setUser, createUserState} from '../actions'
 import {fireAuth} from '../fire.js'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 // import {Card} from 'material-ui/Card';
-// import Drawer from 'material-ui/Drawer';
+
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
+import ControlPanelContainer from './ControlPanelContainer.js'
+import AboutDrawContainer from './AboutDrawContainer'
 
 
 class App extends Component {
@@ -36,16 +38,10 @@ class App extends Component {
             <MuiThemeProvider >
                <div className="App-w">
                   <Header />
+                  {this.props.showAbout? <AboutDrawContainer /> : ""}
+                  <ControlPanelContainer />
                   <main className="inner-w">
-         {/*            <Drawer
-                       docked={false}
-                       width="200px"
-                       open={true}
-                       openSecondary={true}
-                     >
-                        <p>a'sdfk;akdfkl;;saldkf'kl;sadf;lk;'asdklf asdfk;kl;asdf
-                        asdfasdfsadfasdfasdf    sdaf;l;'klasd;flk  sadf;lk;kl;klasdf ;lk l;jksadf'l;k;'klasdf ;lksdf'</p>
-                     </Drawer>*/}
+
                         <NotificationsTableContainer />
                   </main>
                </div>
@@ -57,7 +53,10 @@ class App extends Component {
 
 }
 
-const mapStateToProps = state => ({user:state.user})
+const mapStateToProps = state => ({
+   user:state.user,
+   showAbout:state.display.showAbout
+})
 
 const mapDispatchToProps = dispatch => {
    return {

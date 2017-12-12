@@ -6,8 +6,11 @@
    width: 95%;
    margin: auto;
 }
-main {
-   padding-top: 2.5%;
+main.inner-w {
+   margin-top: 1.5% ;
+   padding: 1%;
+   background-color: white;
+   border: 1px solid #ccc;
 }
 .notification-add {
   color: #070;

@@ -1,0 +1,30 @@
+.ControlPanel.inner-w {
+  margin-top: 1.5%;
+  display: flex; }
+
+.ControlPanel .flex-w {
+  display: flex;
+  width: 410px;
+  justify-content: space-between;
+  align-items: center; }
+
+.ControlPanel .display-control :active, .ControlPanel .display-control :hover {
+  background-color: #00c !important;
+  color: white;
+  font-weight: 600; }
+
+.ControlPanel .add-btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  font-size: 40px;
+  text-align: center;
+  display: flex;
+  background-color: #007800; }
+  .ControlPanel .add-btn:hover {
+    background-color: #00a800; }
+  .ControlPanel .add-btn label {
+    margin: auto;
+    line-height: 0.9;
+    font-weight: 400;
+    color: white; }
