@@ -1,4 +1,4 @@
-const DISPLAY_MODE = {
+const DISPLAY_MODES = {
    NEXT: {
       text: "Today",
       val: 0
@@ -17,4 +17,4 @@ const DISPLAY_MODE = {
    }
 }
 
-export default DISPLAY_MODE
+export default DISPLAY_MODES

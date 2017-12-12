@@ -33,6 +33,7 @@ const AboutDraw = (props) => {
           <a href="mailto:carpben123@gmail.com">email</a>.
           Cheers!
           </p>
+          <footer>Created with: React, Create React App, Redux, React-Redux, Firebase, Bootstrap, React-Bootstrap, Material-Ui, Font Awesome and more. </footer>
 
       </Drawer>
    )

@@ -8,7 +8,7 @@
   justify-content: space-between;
   align-items: center; }
 
-.ControlPanel .display-control :active, .ControlPanel .display-control :hover {
+.ControlPanel .display-control .active, .ControlPanel .display-control :hover {
   background-color: #00c !important;
   color: white;
   font-weight: 600; }

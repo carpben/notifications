@@ -10,7 +10,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = dispatch => ({
-    addNotification: (userId) => {
+    addNewNotification: (userId) => {
 
       dispatch(addNewNotification(userId))
     },
