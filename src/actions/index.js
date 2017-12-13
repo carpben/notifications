@@ -3,27 +3,25 @@ import {fireDB} from '../fire.js'
 export const createUserState = (userId) =>
    (dispatch) => {
       const userNotsDBRef = fireDB.ref('notifications/' + userId);
-
       // userNotsDBRef.set({}) //empty userDB
       userNotsDBRef.once('value').then ( snapshot => {
          const userData = snapshot.val()
          console.log('here is a snapshot of userDb ', userData)
-         let newState = []
-         for (let notKey in userData){
-            let notification = {...userData[notKey]}
-            notification.notKey=notKey
-            notification.date = new Date(notification.date)
-            console.log(notification.date)
-            newState.push(notification)
+         const notificationsStore = userData
+         for (let key in notificationsStore){
+            notificationsStore[key].date = new Date(notificationsStore[key].date)
          }
          dispatch ({
             type: "CREATE_USER_STATE",
-            newState,
+            notificationsStore,
          })
+         dispatch (displayToday())
       })
    }
 
-
+export const displayToday = () => ({
+   type: "DISPLAY_TODAY"
+})
 
 export const addNewNotification = () =>
    (dispatch, getState) => {
@@ -35,7 +33,7 @@ export const addNewNotification = () =>
          title:"",
          next:"",
          details:"",
-         date:"",
+         date: new Date(),
          completed: false
       }
       const notKey = fireDB.ref(`notifications/${userId}`).push(newNotification).key;

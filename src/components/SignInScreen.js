@@ -3,7 +3,7 @@ import '../styles/SignInScreen.css'
 import SignButtonContainer from '../containers/SignButtonContainer.js'
 
 
-const Header = () => (
+const SignInScreen = () => (
         <div className="sign-in-screen">
             <header>
                <div className="take50"></div>
@@ -16,4 +16,4 @@ const Header = () => (
         </div>
     )
 
-export default Header
+export default SignInScreen

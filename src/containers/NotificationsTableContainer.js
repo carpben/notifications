@@ -4,7 +4,8 @@ import {addNewNotification, deleteNotification, toggleComplete, refreshTable, ed
 
 const mapStateToProps = (state) => {
     return {
-        notifications: state.notifications,
+        notificationsStore: state.notifications.store,
+        notificationsToDisplay: state.notifications.toDisplay,
         user: state.user
     }
 }

@@ -8,7 +8,7 @@ const style = {
   fontSize:30
 };
 
-const NotificationsTable = ({notifications, addNewNotification, refreshTable, toggleComplete, deleteNotification, editField, changeImportance, changeDate, user}) => (
+const NotificationsTable = ({notificationsStore, notificationsToDisplay, addNewNotification, refreshTable, toggleComplete, deleteNotification, editField, changeImportance, changeDate, user}) => (
    <div>
 
         <table className="table NotificationsTable">
@@ -26,8 +26,8 @@ const NotificationsTable = ({notifications, addNewNotification, refreshTable, to
         </thead>
         <tbody>
          {
-             notifications.map(
-                 (notification) => <NotificationRow key={notification.notKey} {...notification} toggleComplete={toggleComplete} deleteNotification={deleteNotification} editField={editField} changeImportance={changeImportance} changeDate={changeDate}/>
+             notificationsToDisplay.map(
+                 (notKey) => <NotificationRow notKey={notKey} key={notKey} {...notificationsStore[notKey]} toggleComplete={toggleComplete} deleteNotification={deleteNotification} editField={editField} changeImportance={changeImportance} changeDate={changeDate}/>
              )
          }
         </tbody>

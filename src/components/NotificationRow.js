@@ -12,7 +12,6 @@ class NotificationRow extends React.Component {
 
    render (){
       const {notKey, date, importance, title, nextAction, details, completed, toggleComplete, deleteNotification, editField, changeDate} = this.props
-
       const notificationCompletedClass = completed? 'completed' : '' ;
 
 

@@ -10,11 +10,8 @@ import {fireAuth} from '../fire.js'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 // import {Card} from 'material-ui/Card';
 
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 import ControlPanelContainer from './ControlPanelContainer.js'
 import AboutDrawContainer from './AboutDrawContainer'
-import Paper from 'material-ui/Paper';
 
 
 class App extends Component {

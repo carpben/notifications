@@ -1,9 +1,8 @@
 import React from 'react'
-import {ButtonToolbar, ToggleButtonGroup, ToggleButton, Button} from 'react-bootstrap'
+import {ButtonToolbar, ToggleButtonGroup, ToggleButton} from 'react-bootstrap'
 import '../styles/ControlPanel.css'
 import {connect} from 'react-redux'
 import {setDisplayMode, addNewNotification} from '../actions'
-import {Tabs, Tab} from 'material-ui/Tabs';
 import DISPLAY_MODES from '../CONSTS';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 
@@ -14,10 +13,8 @@ const style = {
 };
 
 const ControlPanel = (props) => {
-   console.log("ControlPanel received displayMode", props.displayMode)
 
    const displayModesArr = Object.values(DISPLAY_MODES)
-   console.log(displayModesArr)
    const toggleButtons = displayModesArr.map(
       modeObj => (
          <ToggleButton key={modeObj.val} value={modeObj.val}>
