@@ -55,12 +55,13 @@ const mapDispatchToProps = dispatch => ({
       dispatch(setDisplayMode(val))
    },
    addNewNotification: () => {
+      console.log(102)
      dispatch(addNewNotification())
    },
 })
 
 const mapStateToProps = (state) => ({
-   displayMode:state.display.notificationsMode
+   displayMode:state.display.displayMode
 })
 
 const ControlPanelContainer = connect (mapStateToProps, mapDispatchToProps)(ControlPanel)

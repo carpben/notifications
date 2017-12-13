@@ -1,21 +1,28 @@
 const init = {
    store: {},
-   toDisplay: []
+   notsToDisplay: []
 }
 
 
 const notifications = (state = init, action) => {
+
+   const store = {...state.store}
+   const toDisplay = [...state.toDisplay]
+
    switch (action.type) {
       case "CREATE_USER_STATE":
-         return {store: action.notificationsStore, toDisplay:state.toDisplay}
-      case "DISPLAY_TODAY":
-
+         return {store: action.notificationsStore, toDisplay}
+      case "DISPLAY_NOTS_NEXT":
+         console.log("state is")
+         console.log(state)
+         if (!state.store) {return state}
          let newToDisplay = Object.keys(state.store)
          console.log("today's display is ", newToDisplay)
          newToDisplay = newToDisplay.filter( notKey => !state.store[notKey].completed )
          console.log("today's display is ", newToDisplay)
-         // const today = new Date().getDate()
-         // newToDisplay= newToDisplay.filter( key => state.store[key].date.getDate()===today )
+         const today = new Date().getDate()
+         newToDisplay= newToDisplay.filter( key => state.store[key].date.getDate()<=today )
+         console.log("today's display is ", newToDisplay)
          // console.log("today's display is ", newToDisplay)
          //
          // newToDisplay.sort(
@@ -23,7 +30,7 @@ const notifications = (state = init, action) => {
          // )
          // console.log("today's display is ", newToDisplay)
 
-         return {store:state.store, toDisplay: newToDisplay}
+         return {store, toDisplay: newToDisplay}
       case 'REFRESH_TABLE':
          return [...state].sort(
             (not1, not2) => not2.importance-not1.importance
@@ -33,12 +40,10 @@ const notifications = (state = init, action) => {
          .sort(
             (not0, not1) => not0.completed-not1.completed
          )
-
-      case 'ADD_NOTIFICATION':
-         return [
-           ...state,
-           action.newNotification
-         ]
+      case 'ADD_NEW_NOTIFICATION':
+         console.log(103)
+         store[action.notKey]=action.newNotification
+         return {store, toDisplay}
       case 'DELETE_NOTIFICATION':
          console.log("delte reducer")
          return state.filter((object)=>object.notKey!==action.notKey);

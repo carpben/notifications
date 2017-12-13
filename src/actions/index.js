@@ -1,9 +1,10 @@
 import {fireDB} from '../fire.js'
+import DISPLAY_MODES from '..CONSTS.js'
 
 export const createUserState = (userId) =>
    (dispatch) => {
       const userNotsDBRef = fireDB.ref('notifications/' + userId);
-      // userNotsDBRef.set({}) //empty userDB
+      userNotsDBRef.set({}) //empty userDB
       userNotsDBRef.once('value').then ( snapshot => {
          const userData = snapshot.val()
          console.log('here is a snapshot of userDb ', userData)
@@ -11,21 +12,42 @@ export const createUserState = (userId) =>
          for (let key in notificationsStore){
             notificationsStore[key].date = new Date(notificationsStore[key].date)
          }
+         console.log("dispatch 1")
          dispatch ({
             type: "CREATE_USER_STATE",
             notificationsStore,
          })
+         console.log("dispatch 2")
+
          dispatch (displayToday())
+         console.log("dispatch 3")
+
       })
+
    }
 
-export const displayToday = () => ({
-   type: "DISPLAY_TODAY"
-})
+export const refreshDisplay = () =>
+   (dispatch, getState) => {
+      const displayMode = getState().display.displayMode
+      if (displayMode === DISPLAY_MODES.next.val){
+         console.log(200)
+         return {
+            type: "displayNotsNext"
+         }
+      }
+   }
+
+export const displayToday = () => {
+   console.log("dispatch 4")
+   return {
+      type: "DISPLAY_TODAY"
+   }
+}
 
 export const addNewNotification = () =>
    (dispatch, getState) => {
       // const userId = getState().user && getState().user.uid;
+      console.log(101)
       const userId = getState().user.uid;
 
       const newNotification = {
@@ -37,13 +59,17 @@ export const addNewNotification = () =>
          completed: false
       }
       const notKey = fireDB.ref(`notifications/${userId}`).push(newNotification).key;
-      newNotification.date=""
-      newNotification.notKey = notKey
       dispatch ({
-       type: 'ADD_NOTIFICATION',
-       newNotification
-     })
+         type: 'ADD_NEW_NOTIFICATION',
+         notKey,
+         newNotification
+      })
+      dispatch ({
+         type: 'DISPLAY_TODAY'
+      })
    }
+
+
 
 
 export const deleteNotification = (notKey) =>

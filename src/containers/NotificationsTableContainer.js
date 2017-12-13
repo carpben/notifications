@@ -11,9 +11,8 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = dispatch => ({
-    addNewNotification: (userId) => {
-
-      dispatch(addNewNotification(userId))
+    addNewNotification: () => {
+      dispatch(addNewNotification())
     },
     refreshTable: () => dispatch(refreshTable()),
     toggleComplete: (notKey, completed) => dispatch(toggleComplete(notKey, completed)),

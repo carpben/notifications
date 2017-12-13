@@ -1,6 +1,6 @@
 const DISPLAY_MODES = {
    NEXT: {
-      text: "Today",
+      text: "Next",
       val: 0
    },
    THIS_WEEK: {
