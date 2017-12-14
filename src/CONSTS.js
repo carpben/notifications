@@ -3,7 +3,7 @@ const DISPLAY_MODES = {
       text: "Next",
       val: 0
    },
-   THIS_WEEK: {
+   WEEK: {
       text: "This Week",
       val: 1
    },

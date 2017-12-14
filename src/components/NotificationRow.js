@@ -1,9 +1,11 @@
 import React from 'react'
-import 'react-datepicker/dist/react-datepicker.css'
+// import 'react-datepicker/dist/react-datepicker.css'
 import ReactStars from 'react-stars'
 import TextareaAutosize from 'react-autosize-textarea';
 import Date3 from './Date3.js'
 import Date4 from './Date4.js'
+import DISPLAY_MODES from '../CONSTS.js'
+
 
 
 class NotificationRow extends React.Component {
@@ -11,12 +13,16 @@ class NotificationRow extends React.Component {
    onStarValueChange = (newRating) => {this.props.changeImportance(this.props.notKey, newRating)}
 
    render (){
-      const {notKey, date, importance, title, nextAction, details, completed, toggleComplete, deleteNotification, editField, changeDate} = this.props
+      const {notKey, date, importance, title, nextAction, details, completed, toggleComplete, deleteNotification, editField, changeDate, displayMode} = this.props
       const notificationCompletedClass = completed? 'completed' : '' ;
+      const dateStr = ()
 
 
       return (
          <tr >
+            {displayMode!=DISPLAY_MODES.NEXT.val? <th className="date-col"> {date} </th> :""}
+            {displayMode!=DISPLAY_MODES.NEXT.val? <td className="date-col"> DATE </td> : "" }
+
             <td className="title-column">
               <TextareaAutosize
               className="textarea2"

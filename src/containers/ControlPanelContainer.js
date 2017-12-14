@@ -2,7 +2,7 @@ import React from 'react'
 import {ButtonToolbar, ToggleButtonGroup, ToggleButton} from 'react-bootstrap'
 import '../styles/ControlPanel.css'
 import {connect} from 'react-redux'
-import {setDisplayMode, addNewNotification} from '../actions'
+import {setDisplayMode, addNewNotification, refreshNotsDisplay} from '../actions'
 import DISPLAY_MODES from '../CONSTS';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 
@@ -30,7 +30,7 @@ const ControlPanel = (props) => {
             +
          </FloatingActionButton>
             <ButtonToolbar>
-               <ToggleButtonGroup className="display-control" bsSize="large" type="radio" name="options" value={props.displayMode} onChange={(val) => props.setDisplayMode(val)}>
+               <ToggleButtonGroup className="display-control" bsSize="large" type="radio" name="options" value={props.displayMode} onChange={(val) => props.setDisplayMode(val)} onClick={props.onlyRefreshNotsDisplay}>
                {/*}   <ToggleButton value={0}>
                      Next
                   </ToggleButton>
@@ -52,10 +52,11 @@ const ControlPanel = (props) => {
 
 const mapDispatchToProps = dispatch => ({
    setDisplayMode: val => {
+      console.log(400)
       dispatch(setDisplayMode(val))
    },
+   onlyRefreshNotsDisplay: () => dispatch(refreshNotsDisplay()) ,
    addNewNotification: () => {
-      console.log(102)
      dispatch(addNewNotification())
    },
 })

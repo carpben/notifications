@@ -6,7 +6,8 @@ const mapStateToProps = (state) => {
     return {
         notificationsStore: state.notifications.store,
         notificationsToDisplay: state.notifications.toDisplay,
-        user: state.user
+        user: state.user,
+        displayMode:state.display.displayMode
     }
 }
 
