@@ -1,3 +1,5 @@
+import {standerdizeDateToDay} from '../dateStanderdize.js'
+
 const init = {
    store: {},
    toDisplay: []
@@ -5,9 +7,7 @@ const init = {
 
 
 const notifications = (state = init, action) => {
-   // console.log("notification reducer")
-   // console.log("action is", action)
-   // console.log("state is", state)
+
 
    const store = {...state.store}
    const toDisplay = [...state.toDisplay]
@@ -16,11 +16,9 @@ const notifications = (state = init, action) => {
       case "CREATE_USER_STATE":
          return {store: action.notificationsStore, toDisplay}
       case 'ADD_NEW_NOTIFICATION':
-         console.log(103)
          store[action.notKey]=action.newNotification
          return {store, toDisplay}
       case 'DELETE_NOTIFICATION':
-         console.log("delte reducer")
          delete store[action.notKey]
          return {store, toDisplay}
       case 'TOGGLE_COMPLETE':
@@ -59,29 +57,25 @@ const notifications = (state = init, action) => {
       }
       //ACTIONS THAT AFFECT THE NOTS_TO_DISPLAY
       case "DISPLAY_NEXT_NOTS":{
-         console.log("state is")
-         console.log(state)
          if (!state.store) {return state}
          let newToDisplay = Object.keys(state.store)
          newToDisplay = newToDisplay.filter( notKey => !state.store[notKey].completed )
-         const today = new Date().getDate()
-         // console.log("today is ", today)
-         // console.log("today's display is ", newToDisplay)
-         // console.log("state is")
-         // console.log(state)
+         const today = standerdizeDateToDay(new Date())
+
          for (let key in newToDisplay){
 
-            // console.log(state.store[key].date.getDate())
          }
-         newToDisplay= newToDisplay.filter( key => state.store[key].date.getDate()<=today )
-         console.log("today's display is ", newToDisplay)
-         // console.log("today's display is ", newToDisplay)
+         newToDisplay= newToDisplay.filter( key => state.store[key].date<=today )
          //
          // newToDisplay.sort(
          //    (key1, key2) => state.store[key2].importance - state.store[key1].importance
          // )
-         // console.log("today's display is ", newToDisplay)
-
+         newToDisplay = newToDisplay.sort(
+            (key1, key2) => state.store[key2].importance - state.store[key1].importance
+         )
+         newToDisplay = newToDisplay.sort(
+            (key1, key2) => state.store[key1].date - state.store[key2].date
+         )
          return {store, toDisplay: newToDisplay}
       }
       case "DISPLAY_ALL_NOTS":{
@@ -96,16 +90,45 @@ const notifications = (state = init, action) => {
          )
          return {store, toDisplay:newToDisplay}
       }
-      case "DISPLAY_WEEK_NOTS":{
+      case "DISPLAY_DONE_NOTS":{
          if (!state.store) {return state}
          let newToDisplay = Object.keys(state.store)
          newToDisplay = newToDisplay.filter( notKey => state.store[notKey].completed )
          newToDisplay = newToDisplay.sort(
             (key1, key2) => state.store[key2].importance - state.store[key1].importance
          )
+         newToDisplay = newToDisplay.sort(
+            (key1, key2) => state.store[key1].date - state.store[key2].date
+         )
+         return {store, toDisplay:newToDisplay}
       }
+      case "DISPLAY_WEEK_NOTS":{
+         if (!state.store) {return state}
+         let newToDisplay = Object.keys(state.store)
+         newToDisplay = newToDisplay.filter( notKey => !state.store[notKey].completed )
+         const sevenDaysFromToday = standerdizeDateToDay(new Date(new Date().getTime()+(7*24 * 60 * 60 * 1000)))
+         newToDisplay= newToDisplay.filter( key => state.store[key].date<=sevenDaysFromToday )
+         newToDisplay = newToDisplay.sort(
+            (key1, key2) => state.store[key2].importance - state.store[key1].importance
+         )
+
+         newToDisplay = newToDisplay.sort(
+            (key1, key2) => state.store[key2].importance - state.store[key1].importance
+         )
+         newToDisplay = newToDisplay.sort(
+            (key1, key2) => state.store[key1].date - state.store[key2].date
+         )
+
+         // newToDisplay = newToDisplay.sort(
+         //    (key1, key2) => state.store[key2].importance - state.store[key1].importance
+         // )
+         // newToDisplay = newToDisplay.sort(
+         //    (key1, key2) => state.store[key1].date - state.store[key2].date
+         // )
+         return {store, toDisplay: newToDisplay}
+      }
+
       case "INSERT_NOT_TOP_OF_DISPLAY":{
-         console.log("INSERT_NOT_TOP_OF_DISPLAY")
          toDisplay.unshift(action.notKey)
          return {store, toDisplay}
       }

@@ -1,5 +1,7 @@
 import {fireDB} from '../fire.js'
 import DISPLAY_MODES from '../CONSTS.js'
+import {standerdizeDateToDay} from '../dateStanderdize.js'
+
 
 // Init
 
@@ -32,10 +34,8 @@ export const createUserState = (userId) =>
 export const addNewNotification = () =>
    (dispatch, getState) => {
       // const userId = getState().user && getState().user.uid;
-      const date = new Date()
-      console.log(date)
-      date.setHours(0,0,1)
-      console.log(date)
+      const date = standerdizeDateToDay(new Date())
+
 
       const unixDate = date.getTime()
       const newNotification = {
@@ -62,17 +62,14 @@ export const addNewNotification = () =>
 
 export const deleteNotification = (notKey) =>
    (dispatch, getState) => {
-      console.log("deleteNotificationAction runs")
-      console.log("notKey is ", notKey)
+
       // const userId = getState().user && getState().user.uid;
       const userId = getState().user.uid;
       fireDB.ref(`notifications/${userId}/${notKey}`).remove();
-      console.log("deleteNotification send to DB")
       dispatch ({
         type: 'DELETE_NOTIFICATION',
         notKey
       })
-      console.log("Delte Dispatched")
       dispatch (refreshNotsDisplay())
    }
 
@@ -85,11 +82,11 @@ export const toggleComplete = (notKey, oldCompleted) =>
          type: 'TOGGLE_COMPLETE',
          notKey
       })
+      dispatch(refreshNotsDisplay())
    }
 
 export const editField = (notKey, field, text) =>
    (dispatch, getState) => {
-      console.log("editField runs")
       const userId = getState().user.uid;
       fireDB.ref(`notifications/${userId}/${notKey}/${field}`).set(text)
       dispatch({
@@ -102,7 +99,6 @@ export const editField = (notKey, field, text) =>
 
 export const changeImportance = (notKey, newImportanceValue) =>
    (dispatch, getState) => {
-      console.log("newImportanceValue", newImportanceValue)
       const userId = getState().user.uid;
       fireDB.ref(`notifications/${userId}/${notKey}/importance`).set(newImportanceValue)
       dispatch({
@@ -114,7 +110,7 @@ export const changeImportance = (notKey, newImportanceValue) =>
 
 export const changeDate = (notKey, newDate) =>
    (dispatch, getState) => {
-      console.log("changeDate runs, ", newDate)
+      newDate = standerdizeDateToDay(newDate)
       const userId = getState().user.uid;
       const newTimeStamp = newDate.getTime()
       fireDB.ref(`notifications/${userId}/${notKey}/date`).set(newTimeStamp)
@@ -130,13 +126,10 @@ export const changeDate = (notKey, newDate) =>
 
 export const setDisplayMode = (val) =>
    (dispatch, getState) =>{
-      console.log("dispatching setDisplayMode. Val is ")
-      console.log(val)
       dispatch({
          type: "SET_DISPLAY_MODE",
          val: val
       })
-      console.log(401)
 
       dispatch (refreshNotsDisplay())
    }
@@ -152,7 +145,6 @@ export const toggleAboutDraw = () => ({
 
 export const refreshNotsDisplay = () =>
    (dispatch, getState) => {
-      console.log("refreshNotsDisplay runs")
       const displayMode = getState().display.displayMode
       if (displayMode === DISPLAY_MODES.NEXT.val){
          dispatch ({ type: "DISPLAY_NEXT_NOTS"})
@@ -171,7 +163,6 @@ export const refreshTable = () => {
 
 
 export const displayToday = () => {
-   console.log("dispatch 4")
    return {
       type: "DISPLAY_TODAY"
    }

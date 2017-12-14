@@ -5,6 +5,8 @@ import TextareaAutosize from 'react-autosize-textarea';
 import Date3 from './Date3.js'
 import Date4 from './Date4.js'
 import DISPLAY_MODES from '../CONSTS.js'
+import {standerdizeDateToDay} from '../dateStanderdize.js'
+
 
 
 
@@ -15,13 +17,28 @@ class NotificationRow extends React.Component {
    render (){
       const {notKey, date, importance, title, nextAction, details, completed, toggleComplete, deleteNotification, editField, changeDate, displayMode} = this.props
       const notificationCompletedClass = completed? 'completed' : '' ;
-      const dateStr = ()
+      const today = standerdizeDateToDay(new Date())
+      const tomorrow = new Date(today.getTime() + (24 * 60 * 60 * 1000))
 
+      let dateStr = null
+      if (date.getTime()==today.getTime()){
+         dateStr="Today"
+      }
+      else if (date.getTime()===tomorrow.getTime()){
+         dateStr="Tomorrow"
+      }
+      else {
+
+         const dateFormatOptions = {
+            month:"short",
+            day:"numeric"
+         }
+         dateStr=date.toLocaleDateString('en-US', dateFormatOptions)
+      }
 
       return (
          <tr >
-            {displayMode!=DISPLAY_MODES.NEXT.val? <th className="date-col"> {date} </th> :""}
-            {displayMode!=DISPLAY_MODES.NEXT.val? <td className="date-col"> DATE </td> : "" }
+            {displayMode!=DISPLAY_MODES.NEXT.val? <td className="date-col"><span> {dateStr} </span></td> : "" }
 
             <td className="title-column">
               <TextareaAutosize
@@ -55,7 +72,7 @@ class NotificationRow extends React.Component {
              />
 
           </td>
-             <td  className="date-column">
+             <td  className="snooze-column">
                {/*<Date1 date={date} notKey={notKey} changeDate={changeDate}/>
                <Date2 */}
                <Date3 date={date} notKey={notKey} changeDate={changeDate}/>
