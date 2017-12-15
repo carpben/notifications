@@ -1,6 +1,7 @@
 import {fireDB} from '../fire.js'
 import DISPLAY_MODES from '../CONSTS.js'
 import {standerdizeDateToDay} from '../dateStanderdize.js'
+import {taskExamples, placeHoldersEmptyDB} from '../loadOptions.js'
 
 
 // Init
@@ -16,17 +17,47 @@ export const createUserState = (userId) =>
       // userNotsDBRef.set({}) //empty userDB
       userNotsDBRef.once('value').then ( snapshot => {
          const userData = snapshot.val()
-         console.log('here is a snapshot of userDb ', userData)
-         const notificationsStore = userData
-         for (let key in notificationsStore){
-            notificationsStore[key].date = new Date(notificationsStore[key].date)
+         if (userData) {
+            console.log('here is a snapshot of userDb ', userData)
+            const notificationsStore = userData
+            for (let key in notificationsStore){
+               notificationsStore[key].date = new Date(notificationsStore[key].date)
+            }
+            dispatch ({
+               type: "CREATE_USER_STATE",
+               notificationsStore,
+            })
+            dispatch (refreshNotsDisplay())
+         } else {
+            console.log(11)
+            dispatch(loadReceivedNots(placeHoldersEmptyDB))
          }
-         dispatch ({
-            type: "CREATE_USER_STATE",
-            notificationsStore,
-         })
-         dispatch (refreshNotsDisplay())
       })
+   }
+
+export const loadReceivedNots = (notsArr) =>
+      (dispatch, getState) => {
+
+         console.log("loadReceivedNots dispatched")
+         const userId = getState().user.uid;
+         const date = standerdizeDateToDay(new Date())
+         const unixDate = date.getTime()
+         notsArr.forEach( notExample => {
+            notExample.date = unixDate
+            const notKey = fireDB.ref(`notifications/${userId}`).push(notExample).key;
+            notExample.date = date
+            dispatch ({
+               type: 'ADD_NEW_NOTIFICATION',
+               notKey,
+               newNotification:notExample
+            })
+         })
+         dispatch(refreshNotsDisplay())
+      }
+
+export const loadTaskExamples = () =>
+   (dispatch) => {
+      dispatch(loadReceivedNots(taskExamples))
    }
 
 // User's actions Nots
@@ -40,9 +71,6 @@ export const addNewNotification = () =>
       const unixDate = date.getTime()
       const newNotification = {
          importance:3,
-         title:"",
-         next:"",
-         details:"",
          date: unixDate,
          completed: false
       }

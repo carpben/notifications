@@ -10,13 +10,13 @@
     display: flex;
     align-items: center;
     padding: 80px 0; }
-    .sign-in-screen header .take50 {
-      flex-basis: 50%; }
-    .sign-in-screen header .flex-w {
-      width: 650px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center; }
+  .sign-in-screen .take50 {
+    flex-basis: 50%; }
+  .sign-in-screen .flex-w {
+    width: 700px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; }
   .sign-in-screen h1 {
     color: white;
     margin: 0;
@@ -29,3 +29,40 @@
     color: white; }
     .sign-in-screen .sign-btn:hover, .sign-in-screen .sign-btn:focus {
       color: white; }
+  @media only screen and (max-width: 1500px) {
+    .sign-in-screen .flex-w {
+      width: 650px; }
+    .sign-in-screen h1 {
+      font-size: 72px; }
+    .sign-in-screen h3 {
+      font-size: 37px; } }
+  @media only screen and (max-width: 1400px) {
+    .sign-in-screen .flex-w {
+      width: 610px; }
+    .sign-in-screen h1 {
+      font-size: 68px; }
+    .sign-in-screen h3 {
+      font-size: 35px; }
+    .sign-in-screen .sign-btn {
+      font-size: 17px; } }
+  @media only screen and (max-width: 1300px) {
+    .sign-in-screen .flex-w {
+      width: 565px; }
+    .sign-in-screen h1 {
+      font-size: 64px; }
+    .sign-in-screen h3 {
+      font-size: 32px; } }
+  @media only screen and (max-width: 1200px) {
+    .sign-in-screen .flex-w {
+      width: 530px; }
+    .sign-in-screen h1 {
+      font-size: 58px; }
+    .sign-in-screen h3 {
+      font-size: 29px; } }
+  @media only screen and (max-width: 1100px) {
+    .sign-in-screen .flex-w {
+      width: 485px; }
+    .sign-in-screen h1 {
+      font-size: 54px; }
+    .sign-in-screen h3 {
+      font-size: 27px; } }

@@ -73,9 +73,7 @@ const notifications = (state = init, action) => {
          newToDisplay = newToDisplay.sort(
             (key1, key2) => state.store[key2].importance - state.store[key1].importance
          )
-         newToDisplay = newToDisplay.sort(
-            (key1, key2) => state.store[key1].date - state.store[key2].date
-         )
+
          return {store, toDisplay: newToDisplay}
       }
       case "DISPLAY_ALL_NOTS":{

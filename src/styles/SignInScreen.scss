@@ -12,15 +12,15 @@
       // justify-content: space-between;
       align-items: center;
       padding: 80px 0;
-      .take50 {
-         flex-basis: 50%;
-      }
-      .flex-w {
-         width: 650px;
-         display: flex;
-         justify-content: space-between;
-         align-items: center;
-      }
+   }
+   .take50 {
+      flex-basis: 50%;
+   }
+   .flex-w {
+      width: 700px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
    }
    h1 {
       color: white;
@@ -37,5 +37,33 @@
       &:hover, &:focus {
          color:white
       }
+   }
+   @media only screen and (max-width: 1500px){
+      .flex-w {width: 650px}
+      h1 {font-size: 72px}
+      h3 {font-size: 37px }
+   }
+   @media only screen and (max-width: 1400px){
+      .flex-w {width: 610px}
+      h1 {font-size: 68px}
+      h3 {font-size: 35px }
+      .sign-btn{ font-size: 17px}
+   }
+   @media only screen and (max-width: 1300px){
+      .flex-w {width: 565px}
+
+      h1 {font-size: 64px}
+      h3 {font-size: 32px }
+   }
+   @media only screen and (max-width: 1200px){
+      .flex-w {width: 530px}
+
+      h1 {font-size: 58px}
+      h3 {font-size: 29px }
+   }
+   @media only screen and (max-width: 1100px){
+      .flex-w {width: 485px}
+      h1 {font-size: 54px}
+      h3 {font-size: 27px }
    }
 }

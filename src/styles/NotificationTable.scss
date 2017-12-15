@@ -18,7 +18,6 @@
    .date-col {
       span {
          min-width: 70px;
-         font-weight: 600;
          display: block
       }
    }
@@ -59,8 +58,11 @@
    .importance-column {
       padding-left: 10px;
       padding-right: 10px;
+      // text-align: center;
       >div {
-         width: 85px;
+         width: 100px;
+         // display: flex;
+         // justify-content: center;
       }
    }
    input {

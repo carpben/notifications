@@ -15,7 +15,8 @@ class NotificationRow extends React.Component {
    onStarValueChange = (newRating) => {this.props.changeImportance(this.props.notKey, newRating)}
 
    render (){
-      const {notKey, date, importance, title, nextAction, details, completed, toggleComplete, deleteNotification, editField, changeDate, displayMode} = this.props
+      const {notKey, date, importance, title, nextAction, details, completed, toggleComplete, deleteNotification,
+         editField, changeDate, displayMode, titlePlaceHolder, nextActionPlaceHolder, detailsPlaceHolder} = this.props
       const notificationCompletedClass = completed? 'completed' : '' ;
       const today = standerdizeDateToDay(new Date())
       const tomorrow = new Date(today.getTime() + (24 * 60 * 60 * 1000))
@@ -43,6 +44,7 @@ class NotificationRow extends React.Component {
             <td className="title-column">
               <TextareaAutosize
               className="textarea2"
+              placeHolder={titlePlaceHolder}
 
                    value = {title}
                    onChange={(e)=> editField(notKey, "title", e.target.value )}
@@ -50,7 +52,7 @@ class NotificationRow extends React.Component {
               />
             </td>
            <td className="importance-column">
-             <ReactStars count={5} size={19} color2={'#ffd700'} value={importance} onChange={this.onStarValueChange} />
+             <ReactStars count={5} size={20} color2={'#00b'} value={importance} onChange={this.onStarValueChange} />
            </td>
 
            <td className="next-column">
@@ -60,6 +62,8 @@ class NotificationRow extends React.Component {
                  value = {nextAction}
                  onChange={(e)=> editField(notKey, "nextAction", e.target.value )}
                  maxRows={10}
+                 placeHolder={nextActionPlaceHolder}
+
               />
           </td>
           <td className="details-column">
@@ -69,6 +73,8 @@ class NotificationRow extends React.Component {
                 value = {details}
                 onChange={(e)=> editField(notKey, "details", e.target.value )}
                 maxRows={10}
+                placeHolder={detailsPlaceHolder}
+
              />
 
           </td>

@@ -2,7 +2,8 @@ import React, {Component} from 'react'
 import Drawer from 'material-ui/Drawer';
 import {connect} from 'react-redux'
 import '../styles/AboutDraw.css'
-import {toggleAboutDraw} from '../actions'
+import {toggleAboutDraw, loadTaskExamples} from '../actions'
+import {Button} from 'react-bootstrap'
 
 const AboutDraw = (props) => {
 
@@ -19,21 +20,25 @@ const AboutDraw = (props) => {
         }}
       >
          <h2>Welcome To Next!</h2>
-         <p>Next is another to-do app, but it's a bit different. It's based on 3 principles:
+         <p>Next is another to-do app, but it's a bit different. It's based on 3 principles:</p>
             <ol>
                <li>Focus on the next step, hence the "next Action" field.</li>
                <li>priority counts. Hence the importance field. The more important tasks show first.</li>
                <li>An important part of handling a task is deciding when it should pop-up again. Managing snooze should be as easy as possible.</li>
             </ol>
-            So go ahead give it a go, and start adding tasks and notifications.
-          </p>
+         <p>So go ahead give it a go, and start adding tasks and notifications.</p>
+         <p>If you just want to check out the app, click the button below to load some task examples.</p>
+          <Button bsStyle="primary" onClick={props.loadTaskExamples}>Load Task Examples</Button>
           <p>My name is Ben Carp, and I developed this app out of my own experience and needs.
-          Your feedback counts. Seriously. Feel free to provide feedback and report bugs either to this
+          Your feedback counts. Seriously. Feel free to provide feedback, request features and report bugs either to this
           <a href="https://github.com/carpben/notifications/issues"> github repository</a>, or directly to my
           <a href="mailto:carpben123@gmail.com">email</a>.
           Cheers!
           </p>
-          <footer>Created with: React, Create React App, Redux, React-Redux, Firebase, Bootstrap, React-Bootstrap, Material-Ui, Font Awesome and more. </footer>
+          <footer>
+          <p>At persent the app is build to display on computers, and devices more than 1000 pixels wide. </p>
+          
+          Created with: React, Create React App, Redux, React-Redux, Firebase, Bootstrap, React-Bootstrap, Material-Ui, Font Awesome and more. </footer>
 
       </Drawer>
    )
@@ -53,7 +58,8 @@ class DrawerUndockedExample extends React.Component {
 }
 
 const mapDispatchToProps = (dispatch) =>({
-   toggleAboutDraw : () =>   dispatch(toggleAboutDraw())
+   toggleAboutDraw : () =>   dispatch(toggleAboutDraw()),
+   loadTaskExamples : () => dispatch(loadTaskExamples())
 })
 
 const mapStateToProps = (state) => ({

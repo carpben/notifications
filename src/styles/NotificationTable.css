@@ -6,7 +6,6 @@
     font-size: 15px; }
   .NotificationsTable .date-col span {
     min-width: 70px;
-    font-weight: 600;
     display: block; }
   .NotificationsTable .date3 {
     text-align: center;
@@ -30,7 +29,7 @@
     padding-left: 10px;
     padding-right: 10px; }
     .NotificationsTable .importance-column > div {
-      width: 85px; }
+      width: 100px; }
   .NotificationsTable input {
     border: none; }
   .NotificationsTable textarea {

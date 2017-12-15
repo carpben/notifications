@@ -17,4 +17,9 @@ const DISPLAY_MODES = {
    }
 }
 
+const TEXT_FIELDS = {
+   TASK: "task",
+   NEXT: "nextAction"
+}
+
 export default DISPLAY_MODES
