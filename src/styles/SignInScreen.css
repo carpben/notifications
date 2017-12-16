@@ -1,68 +1,85 @@
-.sign-in-screen {
+.welcome-screen {
   display: flex;
   width: 100%;
-  height: stretch;
-  border-bottom: 2px solid #009; }
-  .sign-in-screen header {
+  height: 100vh; }
+  .welcome-screen .centered-box {
     flex-basis: 100%;
     margin-top: auto;
-    margin-bottom: auto;
+    margin-bottom: auto; }
+  .welcome-screen .left-space {
+    flex-basis: 29%; }
+  .welcome-screen header {
     display: flex;
     align-items: center;
     padding: 80px 0; }
-  .sign-in-screen .take50 {
-    flex-basis: 50%; }
-  .sign-in-screen .flex-w {
-    width: 700px;
+  .welcome-screen .flex-w {
+    width: 42%;
     display: flex;
     justify-content: space-between;
     align-items: center; }
-  .sign-in-screen h1 {
+  .welcome-screen h1 {
     color: white;
     margin: 0;
     font-size: 76px; }
-  .sign-in-screen h3 {
+  .welcome-screen h3 {
     color: white;
     margin: 0;
     font-size: 40px; }
-  .sign-in-screen .sign-btn {
+  .welcome-screen .sign-btn {
     color: white; }
-    .sign-in-screen .sign-btn:hover, .sign-in-screen .sign-btn:focus {
+    .welcome-screen .sign-btn:hover, .welcome-screen .sign-btn:focus {
       color: white; }
+  .welcome-screen .intro {
+    display: flex;
+    padding-top: 55px;
+    line-height: 1.5; }
+  .welcome-screen p {
+    flex-basis: 42%;
+    color: #000;
+    font-size: 20px;
+    font-weight: 500; }
   @media only screen and (max-width: 1500px) {
-    .sign-in-screen .flex-w {
-      width: 650px; }
-    .sign-in-screen h1 {
-      font-size: 72px; }
-    .sign-in-screen h3 {
-      font-size: 37px; } }
+    .welcome-screen .left-space {
+      flex-basis: 28%; }
+    .welcome-screen .flex-w, .welcome-screen p {
+      flex-basis: 44%; }
+    .welcome-screen h1 {
+      font-size: 71px; }
+    .welcome-screen h3 {
+      font-size: 35px; } }
   @media only screen and (max-width: 1400px) {
-    .sign-in-screen .flex-w {
-      width: 610px; }
-    .sign-in-screen h1 {
-      font-size: 68px; }
-    .sign-in-screen h3 {
-      font-size: 35px; }
-    .sign-in-screen .sign-btn {
+    .welcome-screen .left-space {
+      flex-basis: 27%; }
+    .welcome-screen .flex-w, .welcome-screen p {
+      flex-basis: 46%; }
+    .welcome-screen h1 {
+      font-size: 66px; }
+    .welcome-screen h3 {
+      font-size: 32px; }
+    .welcome-screen .sign-btn {
       font-size: 17px; } }
   @media only screen and (max-width: 1300px) {
-    .sign-in-screen .flex-w {
-      width: 565px; }
-    .sign-in-screen h1 {
-      font-size: 64px; }
-    .sign-in-screen h3 {
-      font-size: 32px; } }
+    .welcome-screen .left-space {
+      flex-basis: 26%; }
+    .welcome-screen .flex-w, .welcome-screen p {
+      flex-basis: 48%; }
+    .welcome-screen h1 {
+      font-size: 63px; }
+    .welcome-screen h3 {
+      font-size: 31px; }
+    .welcome-screen p {
+      font-size: 19px; } }
   @media only screen and (max-width: 1200px) {
-    .sign-in-screen .flex-w {
-      width: 530px; }
-    .sign-in-screen h1 {
-      font-size: 58px; }
-    .sign-in-screen h3 {
-      font-size: 29px; } }
+    .welcome-screen .left-space {
+      flex-basis: 25%; }
+    .welcome-screen .flex-w, .welcome-screen p {
+      flex-basis: 50%; }
+    .welcome-screen h1 {
+      font-size: 60px; }
+    .welcome-screen h3 {
+      font-size: 30px; } }
   @media only screen and (max-width: 1100px) {
-    .sign-in-screen .flex-w {
-      width: 485px; }
-    .sign-in-screen h1 {
-      font-size: 54px; }
-    .sign-in-screen h3 {
-      font-size: 27px; } }
+    .welcome-screen h1 {
+      font-size: 56px; }
+    .welcome-screen h3 {
+      font-size: 2px; } }

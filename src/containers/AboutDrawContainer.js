@@ -26,18 +26,18 @@ const AboutDraw = (props) => {
                <li>priority counts. Hence the importance field. The more important tasks show first.</li>
                <li>An important part of handling a task is deciding when it should pop-up again. Managing snooze should be as easy as possible.</li>
             </ol>
-         <p>So go ahead give it a go, and start adding tasks and notifications.</p>
+         <p>So go ahead give it a go, and start adding tasks and reminders.</p>
          <p>If you just want to check out the app, click the button below to load some task examples.</p>
           <Button bsStyle="primary" onClick={props.loadTaskExamples}>Load Task Examples</Button>
           <p>My name is Ben Carp, and I developed this app out of my own experience and needs.
           Your feedback counts. Seriously. Feel free to provide feedback, request features and report bugs either to this
-          <a href="https://github.com/carpben/notifications/issues"> github repository</a>, or directly to my
-          <a href="mailto:carpben123@gmail.com">email</a>.
+          <a href="https://github.com/carpben/notifications/issues"> github repository</a>, or directly to
+          <a href="mailto:carpben123@gmail.com">my email</a>.
           Cheers!
           </p>
           <footer>
           <p>At persent the app is build to display on computers, and devices more than 1000 pixels wide. </p>
-          
+
           Created with: React, Create React App, Redux, React-Redux, Firebase, Bootstrap, React-Bootstrap, Material-Ui, Font Awesome and more. </footer>
 
       </Drawer>

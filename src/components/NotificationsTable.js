@@ -21,11 +21,12 @@ const NotificationsTable = ({notificationsStore, notificationsToDisplay, addNewN
                {displayMode!=DISPLAY_MODES.NEXT.val? <th className="date-col">Date</th> :""}
                  <th className="title-column">Task / Reminder</th>
                  <th className="importance-column">Importance</th>
-                 <th className="next-column">Next Action</th>
-                 <th className="details-column">More Details</th>
                  <th className="snooze-column"></th>
                  <th className="icon-1-column"></th>
                  <th className="icon-2-column"></th>
+                 <th className="next-column">Next Action</th>
+                 <th className="details-column">More Details</th>
+
                </tr>
            </thead>
            <tbody>

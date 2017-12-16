@@ -14,7 +14,6 @@ export const setUser = (user) => ({
 export const createUserState = (userId) =>
    (dispatch) => {
       const userNotsDBRef = fireDB.ref('notifications/' + userId);
-      // userNotsDBRef.set({}) //empty userDB
       userNotsDBRef.once('value').then ( snapshot => {
          const userData = snapshot.val()
          if (userData) {
@@ -29,7 +28,7 @@ export const createUserState = (userId) =>
             })
             dispatch (refreshNotsDisplay())
          } else {
-            console.log(11)
+            dispatch(toggleAboutDraw())
             dispatch(loadReceivedNots(placeHoldersEmptyDB))
          }
       })

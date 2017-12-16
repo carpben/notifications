@@ -48,12 +48,20 @@ class NotificationRow extends React.Component {
 
                    value = {title}
                    onChange={(e)=> editField(notKey, "title", e.target.value )}
-                   maxRows={10}
+                   maxRows={14}
               />
             </td>
-           <td className="importance-column">
-             <ReactStars count={5} size={20} color2={'#00b'} value={importance} onChange={this.onStarValueChange} />
-           </td>
+            <td className="importance-column">
+              <ReactStars count={5} size={20} color2={'#00b'} value={importance} onChange={this.onStarValueChange} />
+            </td>
+            <td  className="snooze-column">
+             {/*<Date1 date={date} notKey={notKey} changeDate={changeDate}/>
+             <Date2 */}
+             <Date3 date={date} notKey={notKey} changeDate={changeDate}/>
+            </td>
+          <td className="done-column"><span className={"notification-done glyphicon glyphicon-ok " + notificationCompletedClass } onClick={(e)=>toggleComplete(notKey)} ></span></td>
+          <td><span className="remove-column notification-remove glyphicon glyphicon-remove" onClick={(e)=>deleteNotification(notKey)}></span></td>
+
 
            <td className="next-column">
               <TextareaAutosize
@@ -61,7 +69,7 @@ class NotificationRow extends React.Component {
 
                  value = {nextAction}
                  onChange={(e)=> editField(notKey, "nextAction", e.target.value )}
-                 maxRows={10}
+                 maxRows={14}
                  placeHolder={nextActionPlaceHolder}
 
               />
@@ -72,19 +80,13 @@ class NotificationRow extends React.Component {
 
                 value = {details}
                 onChange={(e)=> editField(notKey, "details", e.target.value )}
-                maxRows={10}
+                maxRows={14}
                 placeHolder={detailsPlaceHolder}
 
              />
 
           </td>
-             <td  className="snooze-column">
-               {/*<Date1 date={date} notKey={notKey} changeDate={changeDate}/>
-               <Date2 */}
-               <Date3 date={date} notKey={notKey} changeDate={changeDate}/>
-             </td>
-           <td className="done-column"><span className={"notification-done glyphicon glyphicon-ok " + notificationCompletedClass } onClick={(e)=>toggleComplete(notKey)} ></span></td>
-           <td><span className="remove-column notification-remove glyphicon glyphicon-remove" onClick={(e)=>deleteNotification(notKey)}></span></td>
+
          </tr>
       )
    }
