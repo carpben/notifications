@@ -4,15 +4,16 @@ import {addNewNotification, deleteNotification, toggleComplete, refreshTable, ed
 
 const mapStateToProps = (state) => {
     return {
-        notifications: state.notifications,
-        user: state.user
+        notificationsStore: state.notifications.store,
+        notificationsToDisplay: state.notifications.toDisplay,
+        user: state.user,
+        displayMode:state.display.displayMode
     }
 }
 
 const mapDispatchToProps = dispatch => ({
-    addNewNotification: (userId) => {
-
-      dispatch(addNewNotification(userId))
+    addNewNotification: () => {
+      dispatch(addNewNotification())
     },
     refreshTable: () => dispatch(refreshTable()),
     toggleComplete: (notKey, completed) => dispatch(toggleComplete(notKey, completed)),

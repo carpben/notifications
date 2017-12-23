@@ -3,7 +3,7 @@ const DISPLAY_MODES = {
       text: "Today",
       val: 0
    },
-   THIS_WEEK: {
+   WEEK: {
       text: "This Week",
       val: 1
    },
@@ -15,6 +15,11 @@ const DISPLAY_MODES = {
       text: "Done",
       val: 3
    }
+}
+
+const TEXT_FIELDS = {
+   TASK: "task",
+   NEXT: "nextAction"
 }
 
 export default DISPLAY_MODES

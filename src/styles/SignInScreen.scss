@@ -1,26 +1,30 @@
 
-.sign-in-screen {
-    display: flex;
-    width: 100%;
-    height: stretch;
-   border-bottom: 2px solid #009;
-   header {
+.welcome-screen {
+   display: flex;
+   width: 100%;
+   height: 100vh;
+   .centered-box {
       flex-basis: 100%;
       margin-top:auto;
       margin-bottom: auto;
+   }
+
+   .left-space {
+      flex-basis: 29%;
+   }
+
+   header,  {
       display: flex;
       // justify-content: space-between;
       align-items: center;
       padding: 80px 0;
-      .take50 {
-         flex-basis: 50%;
-      }
-      .flex-w {
-         width: 650px;
-         display: flex;
-         justify-content: space-between;
-         align-items: center;
-      }
+   }
+
+   .flex-w {
+      width: 42%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
    }
    h1 {
       color: white;
@@ -37,5 +41,52 @@
       &:hover, &:focus {
          color:white
       }
+   }
+   .intro {
+      display: flex;
+      padding-top: 55px;
+      line-height: 1.5;
+   }
+   p {
+      flex-basis: 42%;
+      color: #000;
+      font-size: 20px;
+      font-weight: 500;
+   }
+   @media only screen and (max-width: 1500px){
+      // .flex-w, p {width: 650px}
+      .left-space { flex-basis: 28%}
+      .flex-w, p {flex-basis: 44%}
+      h1 {font-size: 71px}
+      h3 {font-size: 35px }
+      // p {font-size: }
+   }
+   @media only screen and (max-width: 1400px){
+      // .flex-w {width: 610px}
+      .left-space { flex-basis: 27%}
+      .flex-w, p {flex-basis: 46%}
+      h1 {font-size: 66px}
+      h3 {font-size: 32px }
+      .sign-btn{ font-size: 17px}
+   }
+   @media only screen and (max-width: 1300px){
+      // .flex-w {width: 565px}
+      .left-space {flex-basis: 26%}
+      .flex-w, p { flex-basis: 48%}
+      h1 {font-size: 63px}
+      h3 {font-size: 31px }
+      p {font-size: 19px}
+   }
+   @media only screen and (max-width: 1200px){
+      // .flex-w {width: 530px}
+      .left-space {flex-basis: 25%}
+      .flex-w, p { flex-basis: 50%}
+      h1 {font-size: 60px}
+      h3 {font-size: 30px }
+   }
+   @media only screen and (max-width: 1100px){
+      // .flex-w {width: 485px}
+      h1 {font-size: 56px}
+      h3 {font-size: 2px }
    }
 }

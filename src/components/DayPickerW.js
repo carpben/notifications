@@ -13,8 +13,6 @@ class DayPickerW extends React.Component {
     // };
   }
   handleDayClick = (day) => {
-     console.log("day data is ", day)
-     console.log("day type is ", typeof day)
      this.props.changeDate(this.props.notKey, day)
     // this.setState({ selectedDay: day });
   }
