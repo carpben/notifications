@@ -20,7 +20,7 @@ const mapDispatchToProps = dispatch => ({
     deleteNotification: (notKey) => dispatch(deleteNotification(notKey)),
     editField: (notKey, field, text) => dispatch(editField(notKey,field,text)),
     changeImportance: (notKey, newImportanceValue) => dispatch(changeImportance(notKey, newImportanceValue)),
-    changeDate: (notKey, newDate) => dispatch(changeDate(notKey, newDate))
+    changeDate: (notKey, newDateStr) => dispatch(changeDate(notKey, newDateStr))
 })
 
 const NotificationsTableContainer = connect(mapStateToProps, mapDispatchToProps)(NotificationsTable)

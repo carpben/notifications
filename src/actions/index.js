@@ -1,8 +1,8 @@
 import {fireDB} from '../fire.js'
 import DISPLAY_MODES from '../CONSTS.js'
-import {standerdizeDateToDay} from '../dateStanderdize.js'
 import {taskExamples, placeHoldersEmptyDB} from '../loadOptions.js'
-
+import moment from "moment"
+import {momentObjToStr} from '../functions.js'
 
 // Init
 
@@ -19,8 +19,15 @@ export const createUserState = (userId) =>
          if (userData) {
             console.log('here is a snapshot of userDb ', userData)
             const notificationsStore = userData
-            for (let key in notificationsStore){
-               notificationsStore[key].date = new Date(notificationsStore[key].date)
+            for (let notKey in notificationsStore){
+               // notificationsStore[notKey].date = new Date(notificationsStore[notKey].date)
+               if (!notificationsStore[notKey].dateStr){
+                  const dateStr = moment((notificationsStore[notKey].date)).format("YYYY-MM-DD")
+                  fireDB.ref(`notifications/${userId}/${notKey}/dateStr`).set(dateStr)
+                  notificationsStore[notKey].dateStr = dateStr
+               }
+               // notificationsStore[notKey].dateStr = moment((notificationsStore[notKey].date)).format("YYYY-MM-DD")
+
             }
             dispatch ({
                type: "CREATE_USER_STATE",
@@ -39,12 +46,10 @@ export const loadReceivedNots = (notsArr) =>
 
          console.log("loadReceivedNots dispatched")
          const userId = getState().user.uid;
-         const date = standerdizeDateToDay(new Date())
-         const unixDate = date.getTime()
+         const dateStr = momentObjToStr(moment())
          notsArr.forEach( notExample => {
-            notExample.date = unixDate
+            notExample.dateStr = dateStr
             const notKey = fireDB.ref(`notifications/${userId}`).push(notExample).key;
-            notExample.date = date
             dispatch ({
                type: 'ADD_NEW_NOTIFICATION',
                notKey,
@@ -64,18 +69,15 @@ export const loadTaskExamples = () =>
 export const addNewNotification = () =>
    (dispatch, getState) => {
       // const userId = getState().user && getState().user.uid;
-      const date = standerdizeDateToDay(new Date())
+      const dateStr = momentObjToStr(moment())
 
-
-      const unixDate = date.getTime()
       const newNotification = {
          importance:3,
-         date: unixDate,
+         date: dateStr,
          completed: false
       }
       const userId = getState().user.uid;
       const notKey = fireDB.ref(`notifications/${userId}`).push(newNotification).key;
-      newNotification.date=date
       dispatch ({
          type: 'ADD_NEW_NOTIFICATION',
          notKey,
@@ -90,7 +92,6 @@ export const addNewNotification = () =>
 export const deleteNotification = (notKey) =>
    (dispatch, getState) => {
 
-      // const userId = getState().user && getState().user.uid;
       const userId = getState().user.uid;
       fireDB.ref(`notifications/${userId}/${notKey}`).remove();
       dispatch ({
@@ -135,16 +136,14 @@ export const changeImportance = (notKey, newImportanceValue) =>
       })
    }
 
-export const changeDate = (notKey, newDate) =>
+export const changeDate = (notKey, newDateStr) =>
    (dispatch, getState) => {
-      newDate = standerdizeDateToDay(newDate)
       const userId = getState().user.uid;
-      const newTimeStamp = newDate.getTime()
-      fireDB.ref(`notifications/${userId}/${notKey}/date`).set(newTimeStamp)
+      fireDB.ref(`notifications/${userId}/${notKey}/dateStr`).set(newDateStr)
       dispatch ({
          type: 'CHANGE_DATE',
          notKey,
-         newDate
+         dateStr:newDateStr
       })
       dispatch(refreshNotsDisplay())
    }
@@ -161,14 +160,11 @@ export const setDisplayMode = (val) =>
       dispatch (refreshNotsDisplay())
    }
 
-
 export const toggleAboutDraw = () => ({
    type: "TOGGLE_ABOUT_DRAW"
 })
 
 // Display
-
-
 
 export const refreshNotsDisplay = () =>
    (dispatch, getState) => {

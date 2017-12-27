@@ -1,32 +1,24 @@
 import React from 'react'
 import NotificationRow from './NotificationRow.js'
 import '../styles/NotificationTable.css'
-import FloatingActionButton from 'material-ui/FloatingActionButton';
 import DISPLAY_MODES from '../CONSTS.js'
-
-const style = {
-  color: 'white',
-  fontSize:30
-};
 
 const NotificationsTable = ({notificationsStore, notificationsToDisplay, addNewNotification, refreshTable,
    toggleComplete, deleteNotification, editField, changeImportance, changeDate, user, displayMode}) => (
-
 
    <div>
 
         <table className="table NotificationsTable">
            <thead>
                <tr>
-               {displayMode!=DISPLAY_MODES.NEXT.val? <th className="date-col">Date</th> :""}
-                 <th className="title-column">Project / Reminder</th>
-                 <th className="importance-column">Importance</th>
-                 <th className="snooze-column"></th>
-                 <th className="icon-1-column"></th>
-                 <th className="icon-2-column"></th>
-                 <th className="next-column">Next Action / Most Important</th>
-                 <th className="details-column">More Details</th>
-
+               {displayMode!==DISPLAY_MODES.NEXT.val? <th className="date-col">Date</th> :""}
+                  <th className="title-column">Project / Task / Reminder</th>
+                  <th className="importance-column">Importance</th>
+                  <th className="snooze-column"></th>
+                  <th className="icon-1-column"></th>
+                  <th className="icon-2-column"></th>
+                  <th className="next-column">Next Step / Most Important</th>
+                  <th className="details-column">More Details</th>
                </tr>
            </thead>
            <tbody>
@@ -39,7 +31,6 @@ const NotificationsTable = ({notificationsStore, notificationsToDisplay, addNewN
             }
            </tbody>
         </table>
-
 
    </div>
     )

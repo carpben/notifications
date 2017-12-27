@@ -1,4 +1,5 @@
-import {standerdizeDateToDay} from '../dateStanderdize.js'
+import moment from "moment"
+import {dateStrToInt, momentObjToStr} from '../functions.js'
 
 const init = {
    store: {},
@@ -11,7 +12,8 @@ const notifications = (state = init, action) => {
 
    const store = {...state.store}
    const toDisplay = [...state.toDisplay]
-   //ACTIONS THAT AFFECT THE NOTS_STORE
+
+//---- ACTIONS THAT AFFECT THE NOTS_STORE -------
    switch (action.type) {
       case "CREATE_USER_STATE":
          return {store: action.notificationsStore, toDisplay}
@@ -28,52 +30,32 @@ const notifications = (state = init, action) => {
       case 'EDIT_FIELD':
          const {notKey, field, text}=action
          store[notKey][field]=text
-            // const newState = state.map( notification => {
-            //    if (notification.notKey===notKey) {
-            //       return Object.assign({}, notification, { [field]: text } )
-            //    }
-            //    return notification
-            // })
          return {store, toDisplay}
       case 'CHANGE_IMPORTANCE_VALUE':{
          const {notKey, newImportanceValue} = action
          store[notKey].importance = newImportanceValue
-            // const {notKey, newImportanceValue}=action
-            // const newState = state.map( not => {
-            //    if (not.notKey!==notKey) {return not}
-            //    else {
-            //       not.importance=newImportanceValue
-            //       return not
-            //    }
-            // })
          return {store, toDisplay}
       }
       case 'CHANGE_DATE':
       {
-         const {notKey, newDate} = action
+         const {notKey, newDate, dateStr} = action
          const newStore = {...state.store}
          newStore[notKey].date = newDate
+         newStore[notKey].dateStr = dateStr
          return {store: newStore, toDisplay:state.toDisplay}
       }
-      //ACTIONS THAT AFFECT THE NOTS_TO_DISPLAY
+
+//---- ACTIONS THAT AFFECT THE NOTS_TO_DISPLAY
+
       case "DISPLAY_NEXT_NOTS":{
          if (!state.store) {return state}
          let newToDisplay = Object.keys(state.store)
          newToDisplay = newToDisplay.filter( notKey => !state.store[notKey].completed )
-         const today = standerdizeDateToDay(new Date())
-
-         for (let key in newToDisplay){
-
-         }
-         newToDisplay= newToDisplay.filter( key => state.store[key].date<=today )
-         //
-         // newToDisplay.sort(
-         //    (key1, key2) => state.store[key2].importance - state.store[key1].importance
-         // )
+         const today = momentObjToStr(moment())
+         newToDisplay= newToDisplay.filter( key => state.store[key].dateStr<=today )
          newToDisplay = newToDisplay.sort(
             (key1, key2) => state.store[key2].importance - state.store[key1].importance
          )
-
          return {store, toDisplay: newToDisplay}
       }
       case "DISPLAY_ALL_NOTS":{
@@ -84,7 +66,11 @@ const notifications = (state = init, action) => {
             (key1, key2) => state.store[key2].importance - state.store[key1].importance
          )
          newToDisplay = newToDisplay.sort(
-            (key1, key2) => state.store[key1].date - state.store[key2].date
+            (key1, key2) => {
+               const date1Int = dateStrToInt(state.store[key1].dateStr)
+               const date2Int = dateStrToInt(state.store[key2].dateStr)
+               return date1Int-date2Int
+            }
          )
          return {store, toDisplay:newToDisplay}
       }
@@ -104,25 +90,21 @@ const notifications = (state = init, action) => {
          if (!state.store) {return state}
          let newToDisplay = Object.keys(state.store)
          newToDisplay = newToDisplay.filter( notKey => !state.store[notKey].completed )
-         const sevenDaysFromToday = standerdizeDateToDay(new Date(new Date().getTime()+(7*24 * 60 * 60 * 1000)))
+         const sevenDaysFromToday = momentObjToStr(moment().add(7, 'days'))
          newToDisplay= newToDisplay.filter( key => state.store[key].date<=sevenDaysFromToday )
          newToDisplay = newToDisplay.sort(
             (key1, key2) => state.store[key2].importance - state.store[key1].importance
          )
-
          newToDisplay = newToDisplay.sort(
             (key1, key2) => state.store[key2].importance - state.store[key1].importance
          )
          newToDisplay = newToDisplay.sort(
-            (key1, key2) => state.store[key1].date - state.store[key2].date
+            (key1, key2) => {
+               const date1Int = dateStrToInt(state.store[key1].dateStr)
+               const date2Int = dateStrToInt(state.store[key2].dateStr)
+               return date1Int-date2Int
+            }
          )
-
-         // newToDisplay = newToDisplay.sort(
-         //    (key1, key2) => state.store[key2].importance - state.store[key1].importance
-         // )
-         // newToDisplay = newToDisplay.sort(
-         //    (key1, key2) => state.store[key1].date - state.store[key2].date
-         // )
          return {store, toDisplay: newToDisplay}
       }
 

@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React from 'react'
 import Drawer from 'material-ui/Drawer';
 import {connect} from 'react-redux'
 import '../styles/AboutDraw.css'
@@ -44,18 +44,6 @@ const AboutDraw = (props) => {
    )
 }
 
-class DrawerUndockedExample extends React.Component {
-
-  constructor(props) {
-    super(props);
-    this.state = {open: false};
-  }
-
-  handleToggle = () => this.setState({open: !this.state.open});
-
-  handleClose = () => this.setState({open: false});
-
-}
 
 const mapDispatchToProps = (dispatch) =>({
    toggleAboutDraw : () =>   dispatch(toggleAboutDraw()),

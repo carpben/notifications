@@ -1,6 +1,7 @@
 .App-w {
    min-height: 100vh;
    background-color:#e8e8e8;
+   padding-bottom: 30px
 }
 .inner-w {
    width: 95%;
@@ -8,7 +9,7 @@
 }
 main.inner-w {
    margin-top: 1.5% ;
-   margin-bottom: 1.5%;
+   // margin-bottom: 1.5%;
    padding: 1%;
    background-color: white;
    border-radius: 6px;

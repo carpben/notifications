@@ -35,7 +35,4 @@ const mapStateToProps = (state) => ({
 
 const SignButtonContainer = connect(mapStateToProps)(SignButton)
 
-
-
-
 export default SignButtonContainer
