@@ -52,7 +52,6 @@ const ControlPanel = (props) => {
 
 const mapDispatchToProps = dispatch => ({
    setDisplayMode: val => {
-      console.log(400)
       dispatch(setDisplayMode(val))
    },
    onlyRefreshNotsDisplay: () => dispatch(refreshNotsDisplay()) ,

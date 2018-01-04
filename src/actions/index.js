@@ -17,7 +17,7 @@ export const createUserState = (userId) =>
       userNotsDBRef.once('value').then ( snapshot => {
          const userData = snapshot.val()
          if (userData) {
-            console.log('here is a snapshot of userDb ', userData)
+            // console.log('here is a snapshot of userDb ', userData)
             const notificationsStore = userData
             for (let notKey in notificationsStore){
                // notificationsStore[notKey].date = new Date(notificationsStore[notKey].date)
