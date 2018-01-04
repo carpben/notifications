@@ -11,7 +11,7 @@ const NotificationsTable = ({notificationsStore, notificationsToDisplay, addNewN
         <table className="table NotificationsTable">
            <thead>
                <tr>
-               {displayMode!==DISPLAY_MODES.NEXT.val? <th className="date-col">Date</th> :""}
+               {displayMode!==DISPLAY_MODES.NEXT.val? <th className="date-col">Date</th> : null}
                   <th className="title-column">Project / Task / Reminder</th>
                   <th className="importance-column">Importance</th>
                   <th className="snooze-column"></th>

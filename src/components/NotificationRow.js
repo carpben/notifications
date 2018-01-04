@@ -30,7 +30,7 @@ class NotificationRow extends React.Component {
 
       return (
          <tr >
-            {displayMode!==DISPLAY_MODES.NEXT.val? <td className="date-col"><span> {dayStr} </span></td> : "" }
+            {displayMode!==DISPLAY_MODES.NEXT.val? <td className="date-col"><span> {dayStr} </span></td> : null }
             <td className="title-column">
               <TextareaAutosize
               className="textarea2"
