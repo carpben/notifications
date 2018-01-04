@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import DayPicker from 'react-day-picker';
 import onClickOutside from 'react-onclickoutside';
 import {momentObjToStr} from '../functions.js'
@@ -6,7 +7,7 @@ import moment from 'moment'
 
 import 'react-day-picker/lib/style.css';
 
-const DayPickerW = ({dateStr, date, changeDate, hideDisplay, notKey}) =>{
+const DayPickerW = ({dateStr, changeDate, hideDisplay, notKey}) =>{
    const dateObj = new Date(dateStr)
 
   const handleDayClick = (dateObj) => {
@@ -14,7 +15,7 @@ const DayPickerW = ({dateStr, date, changeDate, hideDisplay, notKey}) =>{
      console.log("dateStr is ", dateStr)
      changeDate(notKey, dateStr)
   }
-  const handleClickOutside = () => {
+  this.handleClickOutside = (ev) => {
      hideDisplay()
  }
  console.log("dateObj is " , dateObj)
@@ -27,5 +28,12 @@ const DayPickerW = ({dateStr, date, changeDate, hideDisplay, notKey}) =>{
       </div>
     );
   }
+
+DayPickerW.propTypes = {
+   dateStr:PropTypes.string.isRequired,
+   changeDate:PropTypes.func.isRequired,
+   hideDisplay:PropTypes.func.isRequired,
+   notKey:PropTypes.string.isRequired
+}
 
 export default onClickOutside(DayPickerW)
