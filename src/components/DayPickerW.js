@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import DayPicker from 'react-day-picker';
 import onClickOutside from 'react-onclickoutside';
@@ -7,26 +7,30 @@ import moment from 'moment'
 
 import 'react-day-picker/lib/style.css';
 
-const DayPickerW = ({dateStr, changeDate, hideDisplay, notKey}) =>{
-   const dateObj = new Date(dateStr)
+class DayPickerW extends Component {
+   // constructor (props) {
+   //    super(props)
+   // }
+   handleDayClick = (dateObj) => {
+      const dateStr = momentObjToStr(moment(dateObj))
+      this.props.changeDate(this.props.notKey, dateStr)
+   }
+   handleClickOutside = (ev) => {
+      this.props.hideDisplay()
+   }
+   render (){
+      const dateObj = new Date(this.props.dateStr)
 
-  const handleDayClick = (dateObj) => {
-     const dateStr = momentObjToStr(moment(dateObj))
-     console.log("dateStr is ", dateStr)
-     changeDate(notKey, dateStr)
-  }
-  this.handleClickOutside = (ev) => {
-     hideDisplay()
- }
- console.log("dateObj is " , dateObj)
-    return (
-      <div className="day-picker-w">
-        <DayPicker
-          onDayClick={handleDayClick}
-          selectedDays={dateObj}
-        />
-      </div>
-    );
+      return (
+         <div className="day-picker-w">
+         <DayPicker
+            onDayClick={this.handleDayClick}
+            selectedDays={dateObj}
+         />
+         </div>
+       );
+}
+
   }
 
 DayPickerW.propTypes = {

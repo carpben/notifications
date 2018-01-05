@@ -2,9 +2,11 @@ import React from 'react'
 import NotificationRow from './NotificationRow.js'
 import '../styles/NotificationTable.css'
 import DISPLAY_MODES from '../CONSTS.js'
+import PropTypes from 'prop-types';
+
 
 const NotificationsTable = ({notificationsStore, notificationsToDisplay, addNewNotification, refreshTable,
-   toggleComplete, deleteNotification, editField, changeImportance, changeDate, user, displayMode}) => (
+   toggleComplete, deleteNotification, editField, changeImportance, changeDate, displayMode}) => (
 
    <div>
 
@@ -34,5 +36,18 @@ const NotificationsTable = ({notificationsStore, notificationsToDisplay, addNewN
 
    </div>
     )
+
+NotificationsTable.propTypes= {
+   notificationsStore:PropTypes.object.isRequired,
+   notificationsToDisplay:PropTypes.array.isRequired,
+   addNewNotification:PropTypes.func.isRequired,
+   refreshTable:PropTypes.func.isRequired,
+   toggleComplete:PropTypes.func.isRequired,
+   deleteNotification:PropTypes.func.isRequired,
+   editField:PropTypes.func.isRequired,
+   changeImportance:PropTypes.func.isRequired,
+   changeDate:PropTypes.func.isRequired,
+   displayMode: PropTypes.number.isRequired
+}
 
 export default NotificationsTable

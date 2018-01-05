@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import DayPickerW from './DayPickerW.js';
+import PropTypes from 'prop-types';
+
 
 class Date3 extends Component {
    constructor (props) {
@@ -29,6 +31,12 @@ class Date3 extends Component {
             }
          </div>)
    }
+}
+
+Date3.propTypes = {
+   dateStr:PropTypes.string.isRequired,
+   changeDate:PropTypes.func.isRequired,
+   notKey:PropTypes.string.isRequired
 }
 
 export default Date3

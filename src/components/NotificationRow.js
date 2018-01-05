@@ -4,6 +4,8 @@ import TextareaAutosize from 'react-autosize-textarea';
 import Date3 from './Date3.js'
 import DISPLAY_MODES from '../CONSTS.js'
 import moment from 'moment'
+import PropTypes from 'prop-types';
+
 
 class NotificationRow extends React.Component {
 
@@ -70,5 +72,24 @@ class NotificationRow extends React.Component {
       )
    }
 }
+NotificationRow.propTypes = {
+   dateStr:PropTypes.string.isRequired,
+   notKey:PropTypes.string.isRequired,
+   importance:PropTypes.number.isRequired,
+   title:PropTypes.string,
+   nextAction:PropTypes.string,
+   details:PropTypes.string,
+   completed:PropTypes.bool.isRequired,
+   toggleComplete:PropTypes.func.isRequired,
+   deleteNotification:PropTypes.func.isRequired,
+   editField:PropTypes.func.isRequired,
+   changeDate:PropTypes.func.isRequired,
+   changeImportance:PropTypes.func.isRequired,
+   displayMode:PropTypes.number.isRequired,
+   titlePlaceHolder: PropTypes.string,
+   nextActionPlaceHolder:PropTypes.string,
+   detailsPlaceHolder:PropTypes.string
+}
+
 
 export default NotificationRow
