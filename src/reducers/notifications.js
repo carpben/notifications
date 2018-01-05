@@ -51,8 +51,8 @@ const notifications = (state = init, action) => {
          if (!state.store) {return state}
          let newToDisplay = Object.keys(state.store)
          newToDisplay = newToDisplay.filter( notKey => !state.store[notKey].completed )
-         const today = momentObjToStr(moment())
-         newToDisplay= newToDisplay.filter( key => state.store[key].dateStr<=today )
+         const todayStr = momentObjToStr(moment())
+         newToDisplay= newToDisplay.filter( key => state.store[key].dateStr<=todayStr )
          newToDisplay = newToDisplay.sort(
             (key1, key2) => state.store[key2].importance - state.store[key1].importance
          )
@@ -90,8 +90,9 @@ const notifications = (state = init, action) => {
          if (!state.store) {return state}
          let newToDisplay = Object.keys(state.store)
          newToDisplay = newToDisplay.filter( notKey => !state.store[notKey].completed )
-         const sevenDaysFromToday = momentObjToStr(moment().add(7, 'days'))
-         newToDisplay= newToDisplay.filter( key => state.store[key].date<=sevenDaysFromToday )
+         const sevenDaysFromTodayStr = momentObjToStr(moment().add(7, 'days'))
+         console.log(`sevenDaysFromTodayStr=${sevenDaysFromTodayStr}`)
+         newToDisplay= newToDisplay.filter( key => state.store[key].dateStr<=sevenDaysFromTodayStr )
          newToDisplay = newToDisplay.sort(
             (key1, key2) => state.store[key2].importance - state.store[key1].importance
          )

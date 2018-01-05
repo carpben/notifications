@@ -15,19 +15,19 @@ export const createUserState = (userId) =>
    (dispatch) => {
       const userNotsDBRef = fireDB.ref('notifications/' + userId);
       userNotsDBRef.once('value').then ( snapshot => {
-         const userData = snapshot.val()
-         if (userData) {
+         const notificationsStore = snapshot.val()
+         if (notificationsStore) {
             // console.log('here is a snapshot of userDb ', userData)
-            const notificationsStore = userData
             for (let notKey in notificationsStore){
-               // notificationsStore[notKey].date = new Date(notificationsStore[notKey].date)
                if (!notificationsStore[notKey].dateStr){
                   const dateStr = moment((notificationsStore[notKey].date)).format("YYYY-MM-DD")
                   fireDB.ref(`notifications/${userId}/${notKey}/dateStr`).set(dateStr)
                   notificationsStore[notKey].dateStr = dateStr
                }
-               // notificationsStore[notKey].dateStr = moment((notificationsStore[notKey].date)).format("YYYY-MM-DD")
-
+               if (notificationsStore[notKey].date){
+                  console.log(`obj ${notKey} has date`)
+                  fireDB.ref(`notifications/${userId}/${notKey}/date`).set(null)
+               }
             }
             dispatch ({
                type: "CREATE_USER_STATE",
