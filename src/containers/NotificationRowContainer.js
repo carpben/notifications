@@ -3,9 +3,11 @@ import NotificationRow from '../components/NotificationRow'
 import {addNewNotification, deleteNotification, toggleComplete, refreshTable, editField, changeImportance, changeDate} from '../actions'
 
 const mapStateToProps = (state,ownProps) => {
-    const {dateStr, importance, title, nextAction, details, completed, notKey, displayMode} = ownProps
+    const {dateStr, importance, title, nextAction, details, completed} = state.notifications.store[ownProps.notKey]
     return {
-        dateStr, importance, title, nextAction, details, completed, displayMode, notKey
+        dateStr, importance, title, nextAction, details, completed,
+        displayMode:state.display.displayMode,
+        notKey: ownProps.notKey
     }
 }
 
