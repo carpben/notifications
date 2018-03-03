@@ -28,13 +28,18 @@ const NotificationsTable = ({ notificationsStore, notificationsToDisplay, addNew
                     </tr>
                 </thead>
                 <tbody>
-                    {
+                    {   
+                        
                         notificationsToDisplay.map(
-                            (notKey) => <NotificationRowContainer notKey={notKey} key={notKey} displayMode={displayMode} />
-                                
-                                /* <NotificationRow notKey={notKey} displayMode={displayMode} key={notKey}
-                                {...notificationsStore[notKey]} toggleComplete={toggleComplete} deleteNotification={deleteNotification}
-                                editField={editField} changeImportance={changeImportance} changeDate={changeDate} /> */
+                            (notKey) => {
+                                // <NotificationRowContainer notKey={notKey} key={notKey} displayMode={displayMode} />
+                                console.log("notkey is ", notKey)
+                                return (
+                                    <NotificationRowContainer notKey={notKey} displayMode={displayMode} key={notKey}
+                                    {...notificationsStore[notKey]} toggleComplete={toggleComplete} deleteNotification={deleteNotification}
+                                    editField={editField} changeImportance={changeImportance} changeDate={changeDate} /> 
+                                )
+                            }
                             
                         )
                     }
