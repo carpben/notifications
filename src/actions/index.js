@@ -1,39 +1,38 @@
-import {fireDB} from '../fire.js'
+import { fireDB } from '../fire.js'
 import DISPLAY_MODES from '../CONSTS.js'
-import {taskExamples, placeHoldersEmptyDB} from '../loadOptions.js'
+import { taskExamples, placeHoldersEmptyDB } from '../loadOptions.js'
 import moment from "moment"
-import {momentObjToStr} from '../functions.js'
+import { momentObjToStr } from '../functions.js'
 
 // Init
 
 export const setUser = (user) => ({
-   type:'SET_USER',
+   type: 'SET_USER',
    user
 })
 
 export const createUserState = (userId) =>
    (dispatch) => {
       const userNotsDBRef = fireDB.ref('notifications/' + userId);
-      userNotsDBRef.once('value').then ( snapshot => {
+      userNotsDBRef.once('value').then(snapshot => {
          const notificationsStore = snapshot.val()
          if (notificationsStore) {
             // console.log('here is a snapshot of userDb ', userData)
-            for (let notKey in notificationsStore){
-               if (!notificationsStore[notKey].dateStr){
+            for (let notKey in notificationsStore) {
+               if (!notificationsStore[notKey].dateStr) {
                   const dateStr = moment((notificationsStore[notKey].date)).format("YYYY-MM-DD")
                   fireDB.ref(`notifications/${userId}/${notKey}/dateStr`).set(dateStr)
                   notificationsStore[notKey].dateStr = dateStr
                }
-               if (notificationsStore[notKey].date){
-                  console.log(`obj ${notKey} has date`)
+               if (notificationsStore[notKey].date) {
                   fireDB.ref(`notifications/${userId}/${notKey}/date`).set(null)
                }
             }
-            dispatch ({
+            dispatch({
                type: "CREATE_USER_STATE",
                notificationsStore,
             })
-            dispatch (refreshNotsDisplay())
+            dispatch(refreshNotsDisplay())
          } else {
             dispatch(toggleAboutDraw())
             dispatch(loadReceivedNots(placeHoldersEmptyDB))
@@ -42,22 +41,22 @@ export const createUserState = (userId) =>
    }
 
 export const loadReceivedNots = (notsArr) =>
-      (dispatch, getState) => {
+   (dispatch, getState) => {
 
-         console.log("loadReceivedNots dispatched")
-         const userId = getState().user.uid;
-         const dateStr = momentObjToStr(moment())
-         notsArr.forEach( notExample => {
-            notExample.dateStr = dateStr
-            const notKey = fireDB.ref(`notifications/${userId}`).push(notExample).key;
-            dispatch ({
-               type: 'ADD_NEW_NOTIFICATION',
-               notKey,
-               newNotification:notExample
-            })
+      console.log("loadReceivedNots dispatched")
+      const userId = getState().user.uid;
+      const dateStr = momentObjToStr(moment())
+      notsArr.forEach(notExample => {
+         notExample.dateStr = dateStr
+         const notKey = fireDB.ref(`notifications/${userId}`).push(notExample).key;
+         dispatch({
+            type: 'ADD_NEW_NOTIFICATION',
+            notKey,
+            newNotification: notExample
          })
-         dispatch(refreshNotsDisplay())
-      }
+      })
+      dispatch(refreshNotsDisplay())
+   }
 
 export const loadTaskExamples = () =>
    (dispatch) => {
@@ -72,18 +71,18 @@ export const addNewNotification = () =>
       const dateStr = momentObjToStr(moment())
 
       const newNotification = {
-         importance:3,
-         date: dateStr,
+         importance: 3,
+         dateStr,
          completed: false
       }
       const userId = getState().user.uid;
       const notKey = fireDB.ref(`notifications/${userId}`).push(newNotification).key;
-      dispatch ({
+      dispatch({
          type: 'ADD_NEW_NOTIFICATION',
          notKey,
          newNotification
       })
-      dispatch ({
+      dispatch({
          type: "INSERT_NOT_TOP_OF_DISPLAY",
          notKey
       })
@@ -94,11 +93,11 @@ export const deleteNotification = (notKey) =>
 
       const userId = getState().user.uid;
       fireDB.ref(`notifications/${userId}/${notKey}`).remove();
-      dispatch ({
-        type: 'DELETE_NOTIFICATION',
-        notKey
+      dispatch({
+         type: 'DELETE_NOTIFICATION',
+         notKey
       })
-      dispatch (refreshNotsDisplay())
+      dispatch(refreshNotsDisplay())
    }
 
 export const toggleComplete = (notKey, oldCompleted) =>
@@ -118,7 +117,7 @@ export const editField = (notKey, field, text) =>
       const userId = getState().user.uid;
       fireDB.ref(`notifications/${userId}/${notKey}/${field}`).set(text)
       dispatch({
-         type:'EDIT_FIELD',
+         type: 'EDIT_FIELD',
          notKey,
          field,
          text
@@ -140,10 +139,10 @@ export const changeDate = (notKey, newDateStr) =>
    (dispatch, getState) => {
       const userId = getState().user.uid;
       fireDB.ref(`notifications/${userId}/${notKey}/dateStr`).set(newDateStr)
-      dispatch ({
+      dispatch({
          type: 'CHANGE_DATE',
          notKey,
-         dateStr:newDateStr
+         dateStr: newDateStr
       })
       dispatch(refreshNotsDisplay())
    }
@@ -151,13 +150,13 @@ export const changeDate = (notKey, newDateStr) =>
 // User's actions other
 
 export const setDisplayMode = (val) =>
-   (dispatch, getState) =>{
+   (dispatch, getState) => {
       dispatch({
          type: "SET_DISPLAY_MODE",
          val: val
       })
 
-      dispatch (refreshNotsDisplay())
+      dispatch(refreshNotsDisplay())
    }
 
 export const toggleAboutDraw = () => ({
@@ -169,19 +168,19 @@ export const toggleAboutDraw = () => ({
 export const refreshNotsDisplay = () =>
    (dispatch, getState) => {
       const displayMode = getState().display.displayMode
-      if (displayMode === DISPLAY_MODES.NEXT.val){
-         dispatch ({ type: "DISPLAY_NEXT_NOTS"})
-      } else if (displayMode === DISPLAY_MODES.WEEK.val){
-         dispatch ({ type: "DISPLAY_WEEK_NOTS"})
-      } else if (displayMode === DISPLAY_MODES.ALL.val){
-         dispatch ({ type: "DISPLAY_ALL_NOTS"})
-      } else {dispatch({type:"DISPLAY_DONE_NOTS"})}
+      if (displayMode === DISPLAY_MODES.NEXT.val) {
+         dispatch({ type: "DISPLAY_NEXT_NOTS" })
+      } else if (displayMode === DISPLAY_MODES.WEEK.val) {
+         dispatch({ type: "DISPLAY_WEEK_NOTS" })
+      } else if (displayMode === DISPLAY_MODES.ALL.val) {
+         dispatch({ type: "DISPLAY_ALL_NOTS" })
+      } else { dispatch({ type: "DISPLAY_DONE_NOTS" }) }
    }
 
 
 
 export const refreshTable = () => {
-   return {type: 'REFRESH_TABLE'}
+   return { type: 'REFRESH_TABLE' }
 }
 
 
