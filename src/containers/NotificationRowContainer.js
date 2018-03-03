@@ -3,19 +3,15 @@ import NotificationRow from '../components/NotificationRow'
 import {addNewNotification, deleteNotification, toggleComplete, refreshTable, editField, changeImportance, changeDate} from '../actions'
 
 const mapStateToProps = (state,ownProps) => {
-    const {dateStr, importance, title, nextAction, details, completed} = state.notifications.store[ownProps.notKey]
+    const notification = state.notifications.store[ownProps.notKey]
     return {
-        dateStr, importance, title, nextAction, details, completed,
+        notKey: ownProps.notKey, 
+        ...notification, 
         displayMode:state.display.displayMode,
-        notKey: ownProps.notKey
     }
 }
 
 const mapDispatchToProps = dispatch => ({
-    addNewNotification: () => {
-      dispatch(addNewNotification())
-    },
-    refreshTable: () => dispatch(refreshTable()),
     toggleComplete: (notKey, completed) => dispatch(toggleComplete(notKey, completed)),
     deleteNotification: (notKey) => dispatch(deleteNotification(notKey)),
     editField: (notKey, field, text) => dispatch(editField(notKey,field,text)),

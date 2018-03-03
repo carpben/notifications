@@ -4,9 +4,7 @@ import {addNewNotification, deleteNotification, toggleComplete, refreshTable, ed
 
 const mapStateToProps = (state) => {
     return {
-        notificationsStore: state.notifications.store,
         notificationsToDisplay: state.notifications.toDisplay,
-        user: state.user,
         displayMode:state.display.displayMode
     }
 }
@@ -15,12 +13,6 @@ const mapDispatchToProps = dispatch => ({
     addNewNotification: () => {
       dispatch(addNewNotification())
     },
-    refreshTable: () => dispatch(refreshTable()),
-    toggleComplete: (notKey, completed) => dispatch(toggleComplete(notKey, completed)),
-    deleteNotification: (notKey) => dispatch(deleteNotification(notKey)),
-    editField: (notKey, field, text) => dispatch(editField(notKey,field,text)),
-    changeImportance: (notKey, newImportanceValue) => dispatch(changeImportance(notKey, newImportanceValue)),
-    changeDate: (notKey, newDateStr) => dispatch(changeDate(notKey, newDateStr))
 })
 
 const NotificationsTableContainer = connect(mapStateToProps, mapDispatchToProps)(NotificationsTable)

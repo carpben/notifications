@@ -7,8 +7,7 @@ import PropTypes from 'prop-types';
 import NotificationRowContainer from '../containers/NotificationRowContainer.js'
 
 
-const NotificationsTable = ({ notificationsStore, notificationsToDisplay, addNewNotification, refreshTable,
-    toggleComplete, deleteNotification, editField, changeImportance, changeDate, displayMode }) => {
+const NotificationsTable = ({ notificationsToDisplay, addNewNotification, displayMode }) => {
 
     const t1 = performance.now()
 
@@ -28,13 +27,21 @@ const NotificationsTable = ({ notificationsStore, notificationsToDisplay, addNew
                     </tr>
                 </thead>
                 <tbody>
-                    {
+                    {   
+                        
                         notificationsToDisplay.map(
-                            (notKey) => <NotificationRowContainer notKey={notKey} key={notKey} displayMode={displayMode} />
+                            (notKey) => {
                                 
-                                /* <NotificationRow notKey={notKey} displayMode={displayMode} key={notKey}
-                                {...notificationsStore[notKey]} toggleComplete={toggleComplete} deleteNotification={deleteNotification}
-                                editField={editField} changeImportance={changeImportance} changeDate={changeDate} /> */
+                                return (
+
+                                    <NotificationRowContainer notKey={notKey} key={notKey}/>
+
+                                    // <NotificationRowContainer notKey={notKey} displayMode={displayMode} key={notKey}
+                                    // {...notificationsStore[notKey]} toggleComplete={toggleComplete} deleteNotification={deleteNotification}
+                                    // editField={editField} changeImportance={changeImportance} changeDate={changeDate} /> 
+                                    
+                                )
+                            }
                             
                         )
                     }
@@ -51,15 +58,8 @@ const NotificationsTable = ({ notificationsStore, notificationsToDisplay, addNew
 }
 
 NotificationsTable.propTypes = {
-    notificationsStore: PropTypes.object.isRequired,
     notificationsToDisplay: PropTypes.array.isRequired,
     addNewNotification: PropTypes.func.isRequired,
-    refreshTable: PropTypes.func.isRequired,
-    toggleComplete: PropTypes.func.isRequired,
-    deleteNotification: PropTypes.func.isRequired,
-    editField: PropTypes.func.isRequired,
-    changeImportance: PropTypes.func.isRequired,
-    changeDate: PropTypes.func.isRequired,
     displayMode: PropTypes.number.isRequired
 }
 
