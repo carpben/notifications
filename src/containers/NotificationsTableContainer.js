@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import NotificationsTable from '../components/NotificationsTable'
-import {addNewNotification, deleteNotification, toggleComplete, refreshTable, editField, changeImportance, changeDate} from '../actions'
+import {addNewNotification} from '../actions'
 
 const mapStateToProps = (state) => {
     return {

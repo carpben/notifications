@@ -73,7 +73,7 @@ class NotificationRow extends React.Component {
    }
 }
 NotificationRow.propTypes = {
-   dateStr:PropTypes.string.isRequired,
+   dateStr:PropTypes.string,
    notKey:PropTypes.string.isRequired,
    importance:PropTypes.number.isRequired,
    title:PropTypes.string,

@@ -1,15 +1,12 @@
 import React from 'react'
-import NotificationRow from './NotificationRow.js'
-import '../styles/NotificationTable.css'
+import NotificationRowContainer from '../containers/NotificationRowContainer.js'
 import DISPLAY_MODES from '../CONSTS.js'
 import PropTypes from 'prop-types';
+import '../styles/NotificationTable.css'
 
-import NotificationRowContainer from '../containers/NotificationRowContainer.js'
 
 
 const NotificationsTable = ({ notificationsToDisplay, addNewNotification, displayMode }) => {
-
-    const t1 = performance.now()
 
     const notificationsTable = (
         <div>
@@ -28,31 +25,14 @@ const NotificationsTable = ({ notificationsToDisplay, addNewNotification, displa
                 </thead>
                 <tbody>
                     {   
-                        
                         notificationsToDisplay.map(
-                            (notKey) => {
-                                
-                                return (
-
-                                    <NotificationRowContainer notKey={notKey} key={notKey}/>
-
-                                    // <NotificationRowContainer notKey={notKey} displayMode={displayMode} key={notKey}
-                                    // {...notificationsStore[notKey]} toggleComplete={toggleComplete} deleteNotification={deleteNotification}
-                                    // editField={editField} changeImportance={changeImportance} changeDate={changeDate} /> 
-                                    
-                                )
-                            }
-                            
+                            (notKey) => <NotificationRowContainer notKey={notKey} key={notKey}/>
                         )
                     }
                 </tbody>
             </table>
         </div>
     )
-
-    const t2 = performance.now()
-
-    console.log("performance in NotificationTableContiner = ", t2-t1)
 
     return notificationsTable
 }

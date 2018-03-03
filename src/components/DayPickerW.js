@@ -34,7 +34,7 @@ class DayPickerW extends Component {
   }
 
 DayPickerW.propTypes = {
-   dateStr:PropTypes.string.isRequired,
+   dateStr:PropTypes.string,
    changeDate:PropTypes.func.isRequired,
    hideDisplay:PropTypes.func.isRequired,
    notKey:PropTypes.string.isRequired

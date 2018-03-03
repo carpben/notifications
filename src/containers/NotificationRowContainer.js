@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import NotificationRow from '../components/NotificationRow'
-import {addNewNotification, deleteNotification, toggleComplete, refreshTable, editField, changeImportance, changeDate} from '../actions'
+import {deleteNotification, toggleComplete, editField, changeImportance, changeDate} from '../actions'
 
 const mapStateToProps = (state,ownProps) => {
     const notification = state.notifications.store[ownProps.notKey]

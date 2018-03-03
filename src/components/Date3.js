@@ -34,7 +34,7 @@ class Date3 extends Component {
 }
 
 Date3.propTypes = {
-   dateStr:PropTypes.string.isRequired,
+   dateStr:PropTypes.string,
    changeDate:PropTypes.func.isRequired,
    notKey:PropTypes.string.isRequired
 }
