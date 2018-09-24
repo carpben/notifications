@@ -9,11 +9,11 @@
     "moment": "^2.19.1",
     "node-sass-chokidar": "0.0.3",
     "npm-run-all": "^4.1.1",
-    "react": "^16.0.0",
+    "react": "^16.5.2",
     "react-autosize-textarea": "^0.4.9",
     "react-bootstrap": "^0.31.3",
-    "react-day-picker": "^7.0.5",
-    "react-dom": "^16.0.0",
+    "react-day-picker": "^7.2.4",
+    "react-dom": "^16.5.2",
     "react-onclickoutside": "^6.7.0",
     "react-redux": "^5.0.6",
     "react-stars": "^2.2.4",
@@ -21,7 +21,7 @@
     "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
-    "react-scripts": "1.0.14"
+    "react-scripts": "^1.1.5"
   },
   "scripts": {
     "build-css": "node-sass-chokidar src/ -o src/",
